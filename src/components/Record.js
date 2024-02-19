@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, onRecordOpen } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { getIcon } from '../components/Method';
@@ -28,7 +28,7 @@ export default ({ id, description, amount, tipo, method, apartado, highlighted, 
 
     return (
 
-        <li id_movimiento={id} tipo={tipo} method={method} apartado={apartado} className={highlighted == 1 && ("highlighted")}>
+        <li id_movimiento={id} onClick={onRecordOpen} tipo={tipo} method={method} apartado={apartado} className={highlighted == 1 && ("highlighted")}>
             <div className="area"></div>
             { method && ( <i className={`method ${icon}`} method="Online CC"> </i> )}
             <span className="fecha" fecha={fecha}>{formattedDate}</span>

@@ -392,6 +392,8 @@ padding-left:0;
 }
 .centrar {
   display: flex;
+  top: 0;
+  left: 0;
   justify-content: center;
   align-items: flex-end;
   align-items: center;
@@ -414,6 +416,9 @@ padding-left:0;
   width: 100%;
   border-radius: 0;
   max-width: 500px;
+}
+.pantalla.modal{
+    display: block;
 }
 .pantalla.modal .body {
   min-height: initial;
@@ -442,11 +447,11 @@ padding-left:0;
 
 /*Pantalla Completa*/
 
-.pantalla.completa .body{
+.pantalla.completa > .body{
   padding-bottom: 66px;
 }
 
-.pantalla.completa .footer{
+.pantalla.completa > .footer{
   position: fixed;
   background: white;
   width: 100%;
@@ -811,10 +816,6 @@ td.avance{
 
 
 /*Cancel buttons*/
-
-#transaction .cancel{
-  display: none;
-}
 
 .btn-default{
 background: #4e4e4e;
@@ -1259,7 +1260,7 @@ animation: blinker 0.8s linear infinite;
       width: 70%;
   }
 
-  .pantalla.completa .footer{
+  .pantalla.completa > .footer{
       width: 70%;
   }
 
