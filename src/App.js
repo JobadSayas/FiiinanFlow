@@ -6,19 +6,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import './App.css';
 
-
-import Main from './screens/MainScreen';
-import Records from './screens/RecordsScreen';
-import  Form from './screens/Form';
+import MainScreen from './screens/MainScreen';
+import RecordsScreen from './screens/RecordsScreen';
 
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/records/:name/:date?" element={<Records />} />
-        <Route path="/form" element={<Form />} />
+        <Route path="/" element={<MainScreen />} />
+        <Route path="/records/:name/:date?" element={<RecordsScreen />} />
       </Routes>
     </Router>
   );
