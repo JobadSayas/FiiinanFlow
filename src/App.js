@@ -8,6 +8,7 @@ import './App.css';
 
 import MainScreen from './screens/MainScreen';
 import RecordsScreen from './screens/RecordsScreen';
+import TestScreen from './screens/TestScreen';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainScreen />} />
         <Route path="/records/:name/:date?" element={<RecordsScreen />} />
+        <Route path="/test" element={<TestScreen />} />
       </Routes>
     </Router>
   );

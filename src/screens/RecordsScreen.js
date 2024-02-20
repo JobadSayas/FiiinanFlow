@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import Record from '../components/Record';
 import Button from '../components/Button';
@@ -55,16 +56,13 @@ export default () =>  {
         setPopupVisible(false);
     };
 
-    const handleCloseClick = () => {
-        // Navigate to main screen
-        navigate("/");
-    };
-
-
-    
 
     //NAVEGACION
     const navigate = useNavigate();
+
+    const handleBackToMain = () => {
+        navigate('/'); // Navigate to the main page (change '/' to the appropriate route if needed)
+    };
 
 
   return (
@@ -90,7 +88,8 @@ export default () =>  {
             </ul>
 
             <div className="footer">
-                <Button type="btn-default" onClick={handleCloseClick}>Close</Button>
+                <Button type="btn-default" onClick={handleBackToMain} >Close</Button>
+                <button onClick={handleBackToMain}>Back to Main</button>
                 <i className="transaction fas fa-plus-circle" onClick={handleNewRecordClick}></i>
             </div>
 
