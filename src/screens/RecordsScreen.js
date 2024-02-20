@@ -7,7 +7,8 @@ import Record from '../components/Record';
 import Button from '../components/Button';
 import RecordPopUp from '../components/RecordPopUp';
 
-export default () =>  {
+const RecordsScreen = () =>  {
+    
     //GET PARAMETERS
     const { name, date } = useParams();
     const location = useLocation();
@@ -20,7 +21,7 @@ export default () =>  {
     const formattedDate = date || "01-01-01";
 
 
-    //GET DATA
+    //GET RECORDS
     const [records, setRecords] = useState([]);
 
     useEffect(() => {
@@ -41,18 +42,23 @@ export default () =>  {
     const [popupVisible, setPopupVisible] = useState(false);
     const [selectedRecord, setSelectedRecord] = useState(null);
 
+    //Open for new record in popup
     const handleNewRecordClick = () => {
         setPopupVisible(true);
-        console.log("new record");
     };
     
+    //Open existing record in pop up
     const handleRecordClick = (record) => {
         setSelectedRecord(record);
         setPopupVisible(true);
-        console.log("Open record");
     };
 
-    const handleClosePopup = () => {
+    // Function to handle record update from popup
+    const handlePopupClose = (updatedRecord) => {
+        setRecords(records.map(record =>
+            record.id === updatedRecord.id ? updatedRecord : record
+        ));
+        setSelectedRecord(null); // Close the popup
         setPopupVisible(false);
     };
 
@@ -68,8 +74,10 @@ export default () =>  {
   return (
     <div id="movimientos" className='pantalla completa' style={{paddingBottom: '66px'}}>
 
+            {/* Header */}
             <h3 className="apartado"><i className={icon}></i> {name} <span className="saldo">${amount}</span></h3>
 
+            {/* Records list */}
             <ul id="lista">
                 {records.map(record => (
                     <Record 
@@ -87,19 +95,22 @@ export default () =>  {
                 ))}
             </ul>
 
+            {/* Footer */}
             <div className="footer">
                 <Button type="btn-default" onClick={handleBackToMain} >Close</Button>
-                <button onClick={handleBackToMain}>Back to Main</button>
                 <i className="transaction fas fa-plus-circle" onClick={handleNewRecordClick}></i>
             </div>
 
-            {popupVisible && (
+            {/* Popup component */}
+            {popupVisible && selectedRecord && (
                 <RecordPopUp
-                    onClose={handleClosePopup}
                     record={selectedRecord}
+                    onClose={handlePopupClose}
                 ></RecordPopUp>
             )}
 
     </div>
   );
 };
+
+export default RecordsScreen;
