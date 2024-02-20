@@ -18,7 +18,7 @@ export default ({ name, amount, icon, distribution }) =>  {
     //Values
     let formatedAmmount = Number(amount).toFixed(2)
     
-    //Navegacion
+    //NAVEGACION
     const navigate = useNavigate();
 
     const handleButtonClick = () => {

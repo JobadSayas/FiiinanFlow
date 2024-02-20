@@ -1,10 +1,10 @@
-import React, { useState, onRecordOpen } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { getIcon } from '../components/Method';
 
 
-export default ({ id, description, amount, tipo, method, apartado, highlighted, fecha }) =>  {
+export default ({ onRecordOpen, id, description, amount, tipo, method, apartado, highlighted, fecha }) =>  {
 
     //ABRIR MENU
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,26 +12,16 @@ export default ({ id, description, amount, tipo, method, apartado, highlighted, 
     const icon = getIcon(method);
 
     
-    //FORMAT DATE
-    // Convert the date string to a Date object
-    const date = new Date(fecha);
-
-    // Extract date components
-    const month = date.toLocaleString('en-us', { month: 'short' }); // Short month name
-    const day = date.getDate();
-    const year = date.getFullYear().toString().slice(-2); // Last two digits of the year
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-
-    // Format the date and time string
-    const formattedDate = `${month}/${day}/${year} - ${hours}:${minutes.toString().padStart(2, '0')}`;
+    const fechaDate = new Date(fecha);
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: 'numeric', minute: '2-digit', hour12: true };
+    const formatedDate = fechaDate.toLocaleString('en-US', options);
 
     return (
 
         <li id_movimiento={id} onClick={onRecordOpen} tipo={tipo} method={method} apartado={apartado} className={highlighted == 1 && ("highlighted")}>
             <div className="area"></div>
             { method && ( <i className={`method ${icon}`} method="Online CC"> </i> )}
-            <span className="fecha" fecha={fecha}>{formattedDate}</span>
+            <span className="fecha" fecha={formatedDate}>{formatedDate}</span>
             <div className="main-line">
                 <span className="descripcion">{description}</span>
             </div>

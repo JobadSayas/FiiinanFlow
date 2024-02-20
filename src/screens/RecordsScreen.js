@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 
 import Record from '../components/Record';
 import Button from '../components/Button';
@@ -55,6 +55,17 @@ export default () =>  {
         setPopupVisible(false);
     };
 
+    const handleCloseClick = () => {
+        // Navigate to main screen
+        navigate("/");
+    };
+
+
+    
+
+    //NAVEGACION
+    const navigate = useNavigate();
+
 
   return (
     <div id="movimientos" className='pantalla completa' style={{paddingBottom: '66px'}}>
@@ -73,18 +84,18 @@ export default () =>  {
                         highlighted={record.highlight}
                         fecha={record.fecha_mov}
                         record={record}
-                        onRecordOpen={handleRecordClick}
+                        onRecordOpen={() => handleRecordClick(record)}
                     />
-                    ))}
+                ))}
             </ul>
 
             <div className="footer">
-                <Button type="btn-default">Close</Button>
+                <Button type="btn-default" onClick={handleCloseClick}>Close</Button>
                 <i className="transaction fas fa-plus-circle" onClick={handleNewRecordClick}></i>
             </div>
 
             {popupVisible && (
-                <RecordPopUp 
+                <RecordPopUp
                     onClose={handleClosePopup}
                     record={selectedRecord}
                 ></RecordPopUp>

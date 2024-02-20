@@ -1,5 +1,14 @@
 export default ({record, onClose}) => {
 
+    //FORMAT DATE
+    // Convert the date string to a Date object
+    const date = new Date(record.fecha_mov);
+
+    //FORMAT DATE
+    const localDate = new Date(date.getTime() - (date.getTimezoneOffset() * 60000));
+    const formatedDate = localDate.toISOString().slice(0, 16); // Extract YYYY-MM-DDTHH:MM
+
+
     return (
 
         <div id="transaction" className="pantalla modal newModify"> 
@@ -24,17 +33,28 @@ export default ({record, onClose}) => {
 
                         <div id="apartado-holder" className="form-group col-2">
                             <label>Budget</label>
-                            <select className="apartados input-lg form-control"><option>Unplanned</option><option>Groceries</option><option>Jobad</option><option>Maddie</option><option>Leon</option><option>Levi</option><option>Transport</option><option>Services</option><option>Tithe</option><option>Floating Week</option><option>Health</option><option>Travel</option><option>Credits</option><option>Temporal</option><option>Seguros GNP</option><option>Ventas online</option><option>Toyota SUB</option><option>Judith</option><option>AdMob (MXP)</option><option>Bancomer (MXP)</option><option>Banorte (MXP)</option><option>Vida Jobad (MXP)</option><option>Vida Maddie (MXP)</option><option>Savings (MXP)</option></select>
+                            <select className="apartados input-lg form-control" value={record.apartado}>
+                                <option>Unplanned</option><option>Groceries</option>
+                                <option>Jobad</option>
+                                <option>Maddie</option>
+                                <option>Leon</option>
+                                <option>Levi</option>
+                                <option>Transport</option>
+                                <option>Services</option>
+                                <option>Tithe</option>
+                                <option>Floating Week</option>
+                                <option>Health</option>
+                                <option>Travel</option><option>Credits</option><option>Temporal</option><option>Seguros GNP</option><option>Ventas online</option><option>Toyota SUB</option><option>Judith</option><option>AdMob (MXP)</option><option>Bancomer (MXP)</option><option>Banorte (MXP)</option><option>Vida Jobad (MXP)</option><option>Vida Maddie (MXP)</option><option>Savings (MXP)</option></select>
                         </div>
 
                         <div className="form-group">
                             <label>Description</label>
-                            <input className="descripcion input-lg form-control" type="text" />
+                            <input className="descripcion input-lg form-control" type="text" value={record.descripcion} />
                         </div>
 
                         <div id="method-holder" className="form-group col-2 col-first">
                             <label>Method</label>
-                            <select className="method input-lg form-control">
+                            <select className="method input-lg form-control" value={record.method}>
                             <option></option>
                             <option>Online CC</option>
                             <option>Jobad Credit Card</option>
@@ -51,7 +71,8 @@ export default ({record, onClose}) => {
 
                         <div className="form-group col-2">
                             <label>Date</label>
-                            <input className="fecha input-lg form-control" type="datetime-local" placeholder="Fecha" />
+                            <input className="fecha input-lg form-control" type="datetime-local" fecha={formatedDate} value={formatedDate} />
+
                         </div>
                     </div>
 
