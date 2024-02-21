@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default ({record, onClose}) => {
 
@@ -27,6 +28,24 @@ export default ({record, onClose}) => {
         e.preventDefault();
         onClose(updatedRecord); // Pass updated record to parent component
     };
+
+
+    //METHODS
+
+    const [methods, setMethods] = useState([]);
+
+    useEffect(() => {
+        const fetchMethods = async () => {
+        try {
+            const response = await axios.get('https://finanzas.visssible.com/backend/methods-consult.php');
+            setMethods(response.data);
+        } catch (error) {
+            console.error('Error fetching methods:', error);
+        }
+        };
+
+        fetchMethods();
+    }, []);
 
 
     return (
@@ -88,18 +107,15 @@ export default ({record, onClose}) => {
 
                         <div id="method-holder" className="form-group col-2 col-first">
                             <label>Method</label>
-                            <select className="method input-lg form-control" name="method" value={updatedRecord.method} onChange={handleInputChange} >
-                            <option></option>
-                            <option>Online CC</option>
-                            <option>Jobad Credit Card</option>
-                            <option>Maddie Credit Card</option>
-                            <option>Respaldo CC</option>
-                            <option>Amazon CC</option>
-                            <option>Paypal CC</option>
-                            <option>Debit Card</option>
-                            <option>Cash</option>
-                            <option>Savings</option>
-                            <option>Stock</option>
+        
+
+                            <select className="method input-lg form-control" name="method" value={updatedRecord.method} onChange={handleInputChange}>
+                                <option></option>
+                                {methods.map((method) => (
+                                <option key={method.id} value={method.nombre}>
+                                    {method.nombre}
+                                </option>
+                                ))}
                             </select>
                         </div>
 
