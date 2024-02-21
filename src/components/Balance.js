@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import {API_URL} from '../components/Utilities';
+
 export default () =>  {
 
     //Fondos
@@ -9,7 +11,7 @@ export default () =>  {
     useEffect(() => {
         const fetchfondos = async () => {
         try {
-            const response = await fetch('https://finanzas.visssible.com/backend/methods-suma.php');
+            const response = await fetch(`${API_URL}/methods-suma.php`);
             const data = await response.json();
             setFondos(data.fondos);
         } catch (error) {
@@ -27,7 +29,7 @@ export default () =>  {
     useEffect(() => {
         const fetchSumaApartados = async () => {
         try {
-            const response = await fetch('https://finanzas.visssible.com/backend/apartados-suma-activos.php');
+            const response = await fetch(`${API_URL}/apartados-suma-activos.php`);
             const data = await response.json();
             setsumaApartados(data.sum);
         } catch (error) {

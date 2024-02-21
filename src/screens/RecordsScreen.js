@@ -28,7 +28,7 @@ const RecordsScreen = () =>  {
     useEffect(() => {
     const fetchData = async () => {
     try {
-        const response = await axios.get(`${API_URL}movimientos-consultar.php?apartado=${name}`);
+        const response = await axios.get(`${API_URL}/movimientos-consultar.php?apartado=${name}`);
         setRecords(response.data);
     } catch (error) {
         console.error('Error fetching data:', error);

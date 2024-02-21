@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Budget from '../components/Budget';
 import Methods from '../components/Methods';
+import {API_URL} from '../components/Utilities';
 
 export default () =>  {
 
@@ -12,7 +13,7 @@ export default () =>  {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://finanzas.visssible.com/backend/apartados-consultar.php');
+                const response = await axios.get(`${API_URL}/apartados-consultar.php`);
                 setRecords(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
