@@ -789,31 +789,6 @@ td.avance{
 
 /*NEW TRANSACTION*/
 
-/*Action buttons*/
-#newExpense, #newIncome, #modifyRecord{
-  display: none;
-}
-
-.newExpense #newExpense{
-  display: inline-block;
-}
-
-.newIncome #newIncome{
-  display: inline-block;
-}
-
-.newModify #modifyRecord{
-  display: inline-block;
-}
-
-.newIncome #newIncome{
-  display: inline-block;
-}
-
-.modifyRecord #modifyRecord{
-  display: inline-block;
-}
-
 
 /*Cancel buttons*/
 
@@ -829,10 +804,10 @@ background: #4c4c4c;
 color: white;
 }
 
-.newExpense .cancel.new-record{
+.gasto .cancel.new-record{
   display: inline-block!important;
 }
-.newIncome .cancel.new-record{
+.ingreso .cancel.new-record{
   display: inline-block!important;
 }
 
@@ -902,20 +877,20 @@ color: white;
   }
 
   /*expense*/
-  #transaction.newExpense .tabs .expense{
+  #transaction.gasto .tabs .expense{
       color: white;
       background: #d9534e;
   }
-  #transaction.newExpense .tabs .modify{
+  #transaction.gasto .tabs .modify{
       display: none;
   }
 
   /*income*/
-  #transaction.newIncome .tabs .income{
+  #transaction.ingreso .tabs .income{
       color: white;
       background: #4CAF50;
   }
-  #transaction.newIncome .tabs .modify{
+  #transaction.ingreso .tabs .modify{
       display: none;
   }
 

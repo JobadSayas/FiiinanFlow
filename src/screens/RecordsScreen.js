@@ -42,25 +42,29 @@ const RecordsScreen = () =>  {
     //POP UP
     const [popupVisible, setPopupVisible] = useState(false);
     const [selectedRecord, setSelectedRecord] = useState(null);
+    const [popupMode, setPopupMode] = useState(null);
 
     //Open for new record in popup
     const handleNewRecordClick = () => {
-
         setPopupVisible(true);
+        setPopupMode('new');
+        
         setSelectedRecord({
             cantidad: '', // Empty amount
-            apartado: '', // Empty apartado
+            apartado: name, // Empty apartado
             descripcion: '', // Empty descripcion
             method: '', // Empty method
+            tipo: 'gasto',
             fecha_mov: new Date()
         });
     };
     
     //Open existing record in pop up
     const handleRecordClick = (record) => {
-        setSelectedRecord(record);
         setPopupVisible(true);
-        console.log('open existing record');
+        setPopupMode('edit');
+
+        setSelectedRecord(record);
     };
 
     // Function to handle record update from popup
@@ -71,7 +75,7 @@ const RecordsScreen = () =>  {
         setSelectedRecord(null); // Close the popup
         setPopupVisible(false);
     };
-
+    
 
     //NAVEGACION
     const navigate = useNavigate();
@@ -116,6 +120,7 @@ const RecordsScreen = () =>  {
                 <RecordPopUp
                     record={selectedRecord}
                     onClose={handlePopupClose}
+                    mode={popupMode}
                 ></RecordPopUp>
             )}
 

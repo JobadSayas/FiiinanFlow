@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import {API_URL} from '../components/Utilities';
 
-export default ({record, onClose}) => {
+export default ({record, onClose, mode}) => {
 
     //FORMAT DATE
     // Convert the date string to a Date object
@@ -12,24 +12,6 @@ export default ({record, onClose}) => {
     const localDate = new Date(date.getTime() - (date.getTimezoneOffset() * 60000));
     // Transforms the date in the right format YYYY-MM-DDTHH:MM
     const formatedDate = localDate.toISOString().slice(0, 16); 
-
-
-    //UPDATE RECORD IN PARENT COMPONENT
-    const [updatedRecord, setUpdatedRecord] = useState({ ...record });
-
-    // Function to handle input change
-    const handleInputChange = (e) => {
-        setUpdatedRecord({
-            ...updatedRecord,
-            [e.target.name]: e.target.value
-        });
-    };
-
-    // Function to handle form submit
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        onClose(updatedRecord); // Pass updated record to parent component
-    };
 
 
     //METHODS
@@ -68,15 +50,65 @@ export default ({record, onClose}) => {
     }, []);
 
 
+    //TRANSACTION TYPE
+    // Function to handle button click and update theRecord.type
+    const handleTypeButtonClick = (type) => {
+        setUpdatedRecord({
+        ...updatedRecord,
+        tipo: type
+        });
+    };
+
+
+    //SUBMIT CHANGES NEW AND EXISTING RECORDS
+
+    // Function to handle form submit
+    const handleSubmit = (e) => {
+        //Prevent default so that I can put my own functionallity
+        e.preventDefault();
+
+        //NEW EXPENSE
+        console.log('New expense sent');
+
+
+        //NEW INCOME
+        console.log('New income sent');
+
+
+        //EDIT EXPENSE
+        console.log('Edited expense sent');
+
+
+        //EDIT INCOME
+        console.log('Edited income sent');
+
+
+        // Pass updated record to parent component
+        onClose(updatedRecord);
+    };
+
+
+    //UPDATE RECORD IN PARENT COMPONENT
+    const [updatedRecord, setUpdatedRecord] = useState({ ...record });
+
+    // Function to handle input change
+    const handleInputChange = (e) => {
+        setUpdatedRecord({
+            ...updatedRecord,
+            [e.target.name]: e.target.value
+        });
+    };
+        
+
     return (
 
-        <div id="transaction" className="pantalla modal newModify"> 
+        <div id="transaction" className={`pantalla modal ${updatedRecord.tipo} ${mode}`}> 
             <div className="centrar">
                 <form className="modal-holder" onSubmit={handleSubmit}>
 
                     <ul className="tabs">
-                        <li className="expense left">Expense</li>
-                        <li className="income right">Income</li>
+                        <li className="expense left" onClick={() => handleTypeButtonClick('gasto')}>Expense</li>
+                        <li className="income right" onClick={() => handleTypeButtonClick('ingreso')}>Income</li>
                         <li className="modify full">Modify</li>
                     </ul>
 
@@ -130,9 +162,7 @@ export default ({record, onClose}) => {
 
                     <div className="footer">
                         <div className="cancel btn btn-lg btn-default" onClick={onClose}>Cancel</div>
-                        <div id="newExpense" className="confirmar btn btn-lg btn-danger">Save</div>
-                        <div id="newIncome" className="confirmar btn btn-lg btn-success">Save</div>
-                        <button id="modifyRecord" className="confirmar btn btn-lg btn-primary" type="submit">Modify</button>
+                        <button className={`btn btn-lg ${updatedRecord.tipo === 'gasto' ? 'btn btn-danger' : 'btn-success'}`} type="submit">Save</button>
                     </div>
 
                 </form>
