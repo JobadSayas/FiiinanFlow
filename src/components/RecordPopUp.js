@@ -48,6 +48,24 @@ export default ({record, onClose}) => {
     }, []);
 
 
+    //APARTADOS
+
+    const [apartados, setApartados] = useState([]);
+
+    useEffect(() => {
+        const fetchMethods = async () => {
+        try {
+            const response = await axios.get('https://finanzas.visssible.com/backend/apartados-consultar.php');
+            setApartados(response.data);
+        } catch (error) {
+            console.error('Error fetching methods:', error);
+        }
+        };
+
+        fetchMethods();
+    }, []);
+
+
     return (
 
         <div id="transaction" className="pantalla modal newModify"> 
@@ -74,29 +92,12 @@ export default ({record, onClose}) => {
                         <div id="apartado-holder" className="form-group col-2">
                             <label>Budget</label>
                             <select className="apartados input-lg form-control" name="apartado" value={updatedRecord.apartado} onChange={handleInputChange} >
-                                <option>Unplanned</option><option>Groceries</option>
-                                <option>Jobad</option>
-                                <option>Maddie</option>
-                                <option>Leon</option>
-                                <option>Levi</option>
-                                <option>Transport</option>
-                                <option>Services</option>
-                                <option>Tithe</option>
-                                <option>Floating Week</option>
-                                <option>Health</option>
-                                <option>Travel</option>
-                                <option>Credits</option>
-                                <option>Temporal</option>
-                                <option>Seguros GNP</option>
-                                <option>Ventas online</option>
-                                <option>Toyota SUB</option>
-                                <option>Judith</option>
-                                <option>AdMob (MXP)</option>
-                                <option>Bancomer (MXP)</option>
-                                <option>Banorte (MXP)</option>
-                                <option>Vida Jobad (MXP)</option>
-                                <option>Vida Maddie (MXP)</option>
-                                <option>Savings (MXP)</option>
+                                <option></option>
+                                {apartados.map((apartado) => (
+                                <option key={apartado.id} value={apartado.nombre}>
+                                    {apartado.nombre}
+                                </option>
+                                ))}
                             </select>
                         </div>
 
