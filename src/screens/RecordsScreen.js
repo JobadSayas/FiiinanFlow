@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Record from '../components/Record';
 import Button from '../components/Button';
 import RecordPopUp from '../components/RecordPopUp';
+import {API_URL} from '../components/Utilities';
 
 const RecordsScreen = () =>  {
     
@@ -27,7 +28,7 @@ const RecordsScreen = () =>  {
     useEffect(() => {
     const fetchData = async () => {
     try {
-        const response = await axios.get(`https://finanzas.visssible.com/backend/movimientos-consultar.php?apartado=${name}`);
+        const response = await axios.get(`${API_URL}movimientos-consultar.php?apartado=${name}`);
         setRecords(response.data);
     } catch (error) {
         console.error('Error fetching data:', error);
@@ -44,13 +45,22 @@ const RecordsScreen = () =>  {
 
     //Open for new record in popup
     const handleNewRecordClick = () => {
+
         setPopupVisible(true);
+        setSelectedRecord({
+            cantidad: '', // Empty amount
+            apartado: '', // Empty apartado
+            descripcion: '', // Empty descripcion
+            method: '', // Empty method
+            fecha_mov: new Date()
+        });
     };
     
     //Open existing record in pop up
     const handleRecordClick = (record) => {
         setSelectedRecord(record);
         setPopupVisible(true);
+        console.log('open existing record');
     };
 
     // Function to handle record update from popup

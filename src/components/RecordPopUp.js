@@ -84,14 +84,14 @@ export default ({record, onClose}) => {
                             <label>Amount 1</label>
                             <div className="input-group">
                             <span className="input-group-addon">$</span>
-                            <input type="number" name="cantidad" className="cantidad form-control input-lg" value={updatedRecord.cantidad} onChange={handleInputChange} />
+                            <input type="number" name="cantidad" className="cantidad form-control input-lg" value={updatedRecord.cantidad || ''} onChange={handleInputChange} />
                             </div>
                             <div id="remaining">Remaining: <span className="budget">$0.00</span> </div>
                         </div>
 
                         <div id="apartado-holder" className="form-group col-2">
                             <label>Budget</label>
-                            <select className="apartados input-lg form-control" name="apartado" value={updatedRecord.apartado} onChange={handleInputChange} >
+                            <select className="apartados input-lg form-control" name="apartado" value={updatedRecord.apartado || ''} onChange={handleInputChange} >
                                 <option></option>
                                 {apartados.map((apartado) => (
                                 <option key={apartado.id} value={apartado.nombre}>
@@ -103,14 +103,14 @@ export default ({record, onClose}) => {
 
                         <div className="form-group">
                             <label>Description</label>
-                            <input className="descripcion input-lg form-control" name="descripcion" type="text" value={updatedRecord.descripcion} onChange={handleInputChange} />
+                            <input className="descripcion input-lg form-control" name="descripcion" type="text" value={updatedRecord.descripcion || ''} onChange={handleInputChange} />
                         </div>
 
                         <div id="method-holder" className="form-group col-2 col-first">
                             <label>Method</label>
         
 
-                            <select className="method input-lg form-control" name="method" value={updatedRecord.method} onChange={handleInputChange}>
+                            <select className="method input-lg form-control" name="method" value={updatedRecord.method || ''} onChange={handleInputChange}>
                                 <option></option>
                                 {methods.map((method) => (
                                 <option key={method.id} value={method.nombre}>
@@ -122,7 +122,7 @@ export default ({record, onClose}) => {
 
                         <div className="form-group col-2">
                             <label>Date</label>
-                            <input className="fecha input-lg form-control" name="fecha" type="datetime-local" fecha={formatedDate} value={formatedDate} onChange={handleInputChange} />
+                            <input className="fecha input-lg form-control" name="fecha" type="datetime-local" fecha={formatedDate} value={formatedDate || ''} onChange={handleInputChange} />
                         </div>
                     </div>
 
