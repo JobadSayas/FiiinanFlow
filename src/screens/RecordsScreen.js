@@ -48,6 +48,12 @@ const RecordsScreen = () =>  {
     const handleNewRecordClick = () => {
         setPopupVisible(true);
         setPopupMode('new');
+
+        const date = new Date();
+        //This because the time was coming in UTD, to transform to CST
+        const localDate = new Date(date.getTime() - (date.getTimezoneOffset() * 60000));
+        // Transforms the date in the right format YYYY-MM-DDTHH:MM
+        const formatedDate = localDate.toISOString().slice(0, 16); 
         
         setSelectedRecord({
             cantidad: '', // Empty amount
@@ -55,7 +61,7 @@ const RecordsScreen = () =>  {
             descripcion: '', // Empty descripcion
             method: '', // Empty method
             tipo: 'gasto',
-            fecha_mov: new Date()
+            fecha_mov: formatedDate
         });
     };
     

@@ -5,15 +5,19 @@ import {API_URL} from '../components/Utilities';
 
 export default ({record, onClose, mode}) => {
 
-    //FORMAT DATE
-    // Convert the date string to a Date object
-    const date = new Date(record.fecha_mov);
-    //This because the time was coming in UTD, to transform to CST
-    const localDate = new Date(date.getTime() - (date.getTimezoneOffset() * 60000));
-    // Transforms the date in the right format YYYY-MM-DDTHH:MM
-    const formatedDate = localDate.toISOString().slice(0, 16); 
+    //UPDATE RECORD IN PARENT COMPONENT
+    const [updatedRecord, setUpdatedRecord] = useState({ ...record });
 
-
+    // Function to handle input change
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setUpdatedRecord({
+            ...updatedRecord,
+            [name]: value
+        });
+    };
+           
+   
     //METHODS
 
     const [methods, setMethods] = useState([]);
@@ -88,18 +92,6 @@ export default ({record, onClose, mode}) => {
     };
 
 
-    //UPDATE RECORD IN PARENT COMPONENT
-    const [updatedRecord, setUpdatedRecord] = useState({ ...record });
-
-    // Function to handle input change
-    const handleInputChange = (e) => {
-        setUpdatedRecord({
-            ...updatedRecord,
-            [e.target.name]: e.target.value
-        });
-    };
-        
-
     return (
 
         <div id="transaction" className={`pantalla modal ${updatedRecord.tipo} ${mode}`}> 
@@ -156,7 +148,7 @@ export default ({record, onClose, mode}) => {
 
                         <div className="form-group col-2">
                             <label>Date</label>
-                            <input className="fecha input-lg form-control" name="fecha" type="datetime-local" fecha={formatedDate} value={formatedDate || ''} onChange={handleInputChange} />
+                            <input className="descripcion input-lg form-control" name="fecha_mov" type="datetime-local" value={updatedRecord.fecha_mov || ''} onChange={handleInputChange} />
                         </div>
                     </div>
 
