@@ -1,110 +1,66 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 
-// Function to fetch records from API
-const fetchRecords = async () => {
-    try {
-        const response = await axios.get('https://finanzas.visssible.com/backend/movimientos-consultar.php?apartado=Leon');
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching data:', error);
-        return [];
-    }
-};
+const RecordForm = ({ TheRecord, onSave }) => {
+    // State to manage the form data
+    const [formData, setFormData] = useState(TheRecord);
 
-const App = () => {
-    const [records, setRecords] = useState([]);
-    const [selectedRecord, setSelectedRecord] = useState(null);
-    const [popupVisible, setPopupVisible] = useState(false);
-
-    useEffect(() => {
-        // Fetch records when component mounts
-        fetchRecords().then(data => setRecords(data));
-    }, []);
-
-    // Function to handle record click and open popup
-    const handleRecordClick = (record) => {
-        setSelectedRecord(record);
-        setPopupVisible(true);
-    };
-
-    // Function to handle record update from popup
-    const handlePopupClose = (updatedRecord) => {
-        setRecords(records.map(record =>
-            record.id === updatedRecord.id ? updatedRecord : record
-        ));
-        setSelectedRecord(null); // Close the popup
-        setPopupVisible(false);
-    };
-
-    return (
-        <div>
-            <h1>Records</h1>
-            <ul>
-                {records.map(record => (
-                    <li key={record.id} onClick={() => handleRecordClick(record)}>
-                        {record.descripcion} - {record.cantidad} - {record.apartado}
-                    </li>
-                ))}
-            </ul>
-
-            {popupVisible && selectedRecord && (
-                <RecordPopup
-                    record={selectedRecord}
-                    onClose={handlePopupClose}
-                />
-            )}
-        </div>
-    );
-};
-
-// Popup component to edit record
-const RecordPopup = ({ record, onClose }) => {
-    const [updatedRecord, setUpdatedRecord] = useState({ ...record });
-
-    // Function to handle input change
+    // Function to handle form field changes
     const handleInputChange = (e) => {
-        setUpdatedRecord({
-            ...updatedRecord,
-            [e.target.name]: e.target.value
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
         });
     };
 
     // Function to handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
-        onClose(updatedRecord);
+        // Call onSave with the updated form data
+        onSave(formData);
     };
 
     return (
-        <div className="popup">
-            <h2>Edit Record</h2>
-            <form onSubmit={handleSubmit}>
-                <label>Descripcion:</label>
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label>Description</label>
                 <input
                     type="text"
-                    name="descripcion"
-                    value={updatedRecord.descripcion}
+                    name="description"
+                    value={formData.description}
                     onChange={handleInputChange}
                 />
-                <label>cantidad:</label>
+            </div>
+            <div>
+                <label>Amount</label>
+                <input
+                    type="number"
+                    name="amount"
+                    value={formData.amount}
+                    onChange={handleInputChange}
+                />
+            </div>
+            <div>
+                <label>Budget</label>
                 <input
                     type="text"
-                    name="cantidad"
-                    value={updatedRecord.cantidad}
+                    name="budget"
+                    value={formData.budget}
                     onChange={handleInputChange}
                 />
-                <label>apartado:</label>
+            </div>
+            <div>
+                <label>Date</label>
                 <input
-                    type="text"
-                    name="apartado"
-                    value={updatedRecord.apartado}
+                    type="datetime-local"
+                    name="date"
+                    value={formData.date}
                     onChange={handleInputChange}
                 />
-                <button type="submit">Save</button>
-            </form>
-        </div>
+            </div>
+            <button type="submit">Save</button>
+        </form>
     );
 };
 
-export default App;
+export default RecordForm;
