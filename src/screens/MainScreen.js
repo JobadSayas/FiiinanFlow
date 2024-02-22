@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Budget from '../components/Budget';
 import Methods from '../components/Methods';
+import MainMenu from '../components/MainMenu';
 import {API_URL} from '../components/Utilities';
 
 export default () =>  {
@@ -29,21 +30,23 @@ export default () =>  {
         <div id="principal" className='pantalla completa' style={{paddingBottom: '66px'}}>
 
             <Methods/>
-            
+
             <ul id='chart'></ul>
 
             <ul id="apartados">
                 {records.map(record => (
                     <Budget 
-                        key={record.id} 
-                        name={record.nombre} 
-                        amount={record.saldo} 
-                        icon={record.icono} 
-                        distribution={record.reparticion}
+                    key={record.id} 
+                    name={record.nombre} 
+                    amount={record.saldo} 
+                    icon={record.icono} 
+                    distribution={record.reparticion}
                     />
-                ))}
+                    ))}
             </ul>
         
+            <MainMenu/>
+
         </div>
     );
   
