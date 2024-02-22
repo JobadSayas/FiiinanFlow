@@ -56,10 +56,10 @@ const RecordsScreen = () =>  {
         const formatedDate = localDate.toISOString().slice(0, 16); 
         
         setSelectedRecord({
-            cantidad: '', // Empty amount
-            apartado: name, // Empty apartado
-            descripcion: '', // Empty descripcion
-            method: '', // Empty method
+            cantidad: '',
+            apartado: name, 
+            descripcion: '',
+            method: '',
             tipo: 'gasto',
             fecha_mov: formatedDate
         });

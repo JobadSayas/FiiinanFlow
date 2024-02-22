@@ -112,7 +112,7 @@ export default ({record, onClose, mode}) => {
                             <span className="input-group-addon">$</span>
                             <input type="number" name="cantidad" className="cantidad form-control input-lg" value={updatedRecord.cantidad || ''} onChange={handleInputChange} />
                             </div>
-                            <div id="remaining">Remaining: <span className="budget">$0.00</span> </div>
+                            {/* <div id="remaining">Remaining: <span className="budget">$0.00</span> </div> */}
                         </div>
 
                         <div id="apartado-holder" className="form-group col-2">
