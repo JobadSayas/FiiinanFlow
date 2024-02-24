@@ -43,7 +43,7 @@ export default ({record, onClose, mode}) => {
     useEffect(() => {
         const fetchMethods = async () => {
         try {
-            const response = await axios.get('https://finanzas.visssible.com/backend/apartados-consultar.php');
+            const response = await axios.get(`${API_URL}/apartados-consultar.php`);
             setApartados(response.data);
         } catch (error) {
             console.error('Error fetching methods:', error);
