@@ -7,6 +7,7 @@ import Record from '../components/Record';
 import Button from '../components/Button';
 import RecordPopUp from '../components/RecordPopUp';
 import {API_URL} from '../components/Utilities';
+import { MethodProvider } from '../context/MethodContext';
 
 const RecordsScreen = () =>  {
     
@@ -98,22 +99,24 @@ const RecordsScreen = () =>  {
             <h3 className="apartado"><i className={icon}></i> {name} <span className="saldo">${amount}</span></h3>
 
             {/* Records list */}
-            <ul id="lista">
-                {records.map(record => (
-                    <Record 
-                        key={record.id}
-                        description={record.descripcion}
-                        amount={record.cantidad}
-                        tipo={record.tipo}
-                        method={record.method}
-                        apartado={record.apartado}
-                        highlighted={record.highlight}
-                        fecha={record.fecha_mov}
-                        record={record}
-                        onRecordOpen={() => handleRecordClick(record)}
-                    />
-                ))}
-            </ul>
+            <MethodProvider>
+                <ul id="lista">
+                    {records.map(record => (
+                        <Record 
+                            key={record.id}
+                            description={record.descripcion}
+                            amount={record.cantidad}
+                            tipo={record.tipo}
+                            method={record.method}
+                            apartado={record.apartado}
+                            highlighted={record.highlight}
+                            fecha={record.fecha_mov}
+                            record={record}
+                            onRecordOpen={() => handleRecordClick(record)}
+                        />
+                    ))}
+                </ul>
+            </MethodProvider>
 
             {/* Footer */}
             <div className="footer">

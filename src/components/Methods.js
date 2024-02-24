@@ -13,7 +13,7 @@ export default () =>  {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${API_URL}/methods-consult.php`);
+                const response = await axios.get(`${API_URL}/NEWlistMethods.php`);
                 setMethods(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -23,54 +23,40 @@ export default () =>  {
         fetchData();
     }, []); // The empty dependency array ensures that this effect runs once on mount
 
-    // Define the desired order of items
-    const desiredOrder = ["Account", "Online CC", "Jobad CC", "Maddie CC", "Respaldo CC", "Amazon CC",  "PayPal CC", "Cash", "Savings", "Stock"];
-
-    // Create a new array to store the reordered methods
-    const reorderedMethods = [];
-
-    // Iterate over the desired order and push matching items from the original array
-    desiredOrder.forEach(name => {
-        const method = methods.find(method => method.nombre === name);
-        if (method) {
-            reorderedMethods.push(method);
-        }
-    });
-
-
-    //Real amount
+    
+    //REAL AMOUNT
 
     let realAmount = 0;
-    if (reorderedMethods.length >= 5) {
-        realAmount = (
-                        parseFloat(reorderedMethods[0].saldo) +
-                        parseFloat(reorderedMethods[1].saldo) + 
-                        parseFloat(reorderedMethods[2].saldo) + 
-                        parseFloat(reorderedMethods[3].saldo) + 
-                        parseFloat(reorderedMethods[4].saldo)
-                    ).toFixed(2);
+    if (methods.length > 0) {
+        for (let i = 0; i < methods.length; i++) {
+            if(methods[i].summarize == 1)
+                realAmount += parseFloat(methods[i].saldo);
+        }
     }
+
 
     return(
 
         <ul id='methods'>
 
-            {reorderedMethods.length > 0 && (
+            {methods.length > 0 && (
                 <li key="0" className="Account">
-                    <i className="fas fa-money-check-alt"></i>
-                    <div className="name">{reorderedMethods[0].nombre}</div>
-                    <div className="amount">{reorderedMethods[0].saldo}</div>
-                    <div class="realAmount">(${realAmount})</div>
+                    <i className={methods[0]?.icono} style={{ color: methods[0]?.color }}></i>
+                    <div className="name">{methods[0].nombre}</div>
+                    <div className="amount">{methods[0].saldo}</div>
+                    <div className="realAmount">(${realAmount})</div>
                 </li>
             )}
 
             <Balance/>
 
-            {reorderedMethods.slice(1).map((method, index) => (
+            {methods.slice(1).map((method, index) => (
                 <Method 
                     key={index} 
                     name={method.nombre} 
                     amount={method.saldo} 
+                    icon={method.icono} 
+                    color={method.color} 
                 />
             ))}
             

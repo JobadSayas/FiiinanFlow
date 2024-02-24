@@ -1,26 +1,31 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { getIcon } from '../components/Method';
+import { useMethodData } from '../context/MethodContext';
 
 
 export default ({ onRecordOpen, id, description, amount, tipo, method, apartado, highlighted, fecha }) =>  {
 
     //ABRIR MENU
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const icon = getIcon(method);
-
     
     const fechaDate = new Date(fecha);
     const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: 'numeric', minute: '2-digit', hour12: true };
     const formatedDate = fechaDate.toLocaleString('en-US', options);
 
+
+    //METHODS
+    const methodData = useMethodData();
+
+    const methodInfo = methodData.find(data => data.nombre === method);
+    
+    const { icono, color } = methodInfo || {};
+
     return (
 
         <li id_movimiento={id} onClick={onRecordOpen} tipo={tipo} method={method} apartado={apartado} className={highlighted == 1 && ("highlighted")}>
             <div className="area"></div>
-            { method && ( <i className={`method ${icon}`}> </i> )}
+            { method && ( <i className={`method ${icono}`} style={{color:color}}></i> )} 
             <span className="fecha" fecha={formatedDate}>{formatedDate}</span>
             <div className="main-line">
                 <span className="descripcion">{description}</span>
