@@ -8,14 +8,14 @@ import {API_URL} from '../components/Utilities';
 
 export default () =>  {
 
-    //RECORDS
-    const [records, setRecords] = useState([]);
+    //BUDGETS   
+    const [budgets, setBudgets] = useState([]);
     
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`${API_URL}/apartados-consultar.php`);
-                setRecords(response.data);
+                setBudgets(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -34,13 +34,13 @@ export default () =>  {
             <ul id='chart'></ul>
 
             <ul id="apartados">
-                {records.map(record => (
+                {budgets.map(budget => (
                     <Budget 
-                    key={record.id} 
-                    name={record.nombre} 
-                    amount={record.saldo} 
-                    icon={record.icono} 
-                    distribution={record.reparticion}
+                        key={budget.id} 
+                        name={budget.nombre} 
+                        amount={budget.saldo} 
+                        icon={budget.icono} 
+                        distribution={budget.reparticion}
                     />
                     ))}
             </ul>

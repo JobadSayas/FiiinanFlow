@@ -23,14 +23,25 @@ export default () =>  {
         fetchData();
     }, []); // The empty dependency array ensures that this effect runs once on mount
 
-    
+
     //REAL AMOUNT
 
-    let realAmount = 0;
+    let realAccount = 0;
     if (methods.length > 0) {
         for (let i = 0; i < methods.length; i++) {
-            if(methods[i].summarize == 1)
-                realAmount += parseFloat(methods[i].saldo);
+            if(methods[i].realAccount == 1)
+                realAccount += parseFloat(methods[i].saldo);
+        }
+    }
+
+
+    //FOUNDS
+
+    let founds = 0;
+    if (methods.length > 0) {
+        for (let i = 0; i < methods.length; i++) {
+            if(methods[i].found == 1)
+                founds += parseFloat(methods[i].saldo);
         }
     }
 
@@ -44,11 +55,14 @@ export default () =>  {
                     <i className={methods[0]?.icono} style={{ color: methods[0]?.color }}></i>
                     <div className="name">{methods[0].nombre}</div>
                     <div className="amount">{methods[0].saldo}</div>
-                    <div className="realAmount">(${realAmount})</div>
+                    <div className="realAccount">(${(realAccount).toFixed(2)})</div>
                 </li>
             )}
 
-            <Balance/>
+            <Balance 
+                realAccount = {realAccount}
+                founds = {founds}
+            />
 
             {methods.slice(1).map((method, index) => (
                 <Method 

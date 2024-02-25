@@ -35,7 +35,7 @@ border-color: #595959;
 }
 
 .red{
-  color:red;
+  color:#F44336;
 }
 
 .col-2{
@@ -975,7 +975,7 @@ margin-bottom: -10px;
       
 
 
-      #methods li .amount.negative{
+      #methods li .amount.red{
           color: #F44336;
       }
 
@@ -1037,12 +1037,12 @@ margin-bottom: -10px;
       font-size: 18px
     }
 
-          .realAmount{
+          .realAccount{
               font-size: 14px;
               margin-top: 1px;
               }
-            .realAmount.red{
-              color: #F44336;
+            .realAccount.red{
+              color: #F44336;;
             }
 
 #methods li#balance{

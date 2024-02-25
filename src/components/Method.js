@@ -4,7 +4,7 @@ export default({ name, amount, icon, color }) => {
         <li className="regular">
             <i className={icon} style={{ color: color }}></i>
             <div className="name">{name}</div>
-            <div className="amount">${amount}</div>
+            <div className={`amount ${amount < 0 ? "red" : ""}`}>${amount}</div>
         </li>
     );
 };
