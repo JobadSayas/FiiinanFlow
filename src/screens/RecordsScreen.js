@@ -83,7 +83,7 @@ const RecordsScreen = () =>  {
             ));
         }
         else if(popupMode=="new"){
-            
+            setRecords([updatedRecord, ...records]);
         }
 
         setSelectedRecord(null);
