@@ -86,6 +86,17 @@ export default ({record, onClose, mode}) => {
 
         //UPDATE RECORD
 
+        if(mode=="update"){
+            axios.put(`${API_URL}/NEWtransaction.php`, updatedRecord)
+            .then(response => {
+                console.log('Record updated successfully:', response.data);
+                // Handle success response if needed
+            })
+            .catch(error => {
+                console.error('Error updating record:', error);
+                // Handle error if needed
+            });
+        }
 
 
         // Pass updated record to parent component

@@ -76,10 +76,17 @@ const RecordsScreen = () =>  {
 
     // Function to handle record update from popup
     const handlePopupClose = (updatedRecord) => {
-        setRecords(records.map(record =>
-            record.id === updatedRecord.id ? updatedRecord : record
-        ));
-        setSelectedRecord(null); // Close the popup
+
+        if(popupMode=="update"){
+            setRecords(records.map(record =>
+                record.id === updatedRecord.id ? updatedRecord : record
+            ));
+        }
+        else if(popupMode=="new"){
+            
+        }
+
+        setSelectedRecord(null);
         setPopupVisible(false);
     };
     
