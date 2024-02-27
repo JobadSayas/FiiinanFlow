@@ -67,24 +67,25 @@ export default ({record, onClose, mode}) => {
     //SUBMIT CHANGES NEW AND EXISTING RECORDS
 
     // Function to handle form submit
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         //Prevent default so that I can put my own functionallity
         e.preventDefault();
 
-        //NEW EXPENSE
-        console.log('New expense sent');
+        //NEW RECORD
+
+        if(mode=="new"){
+            try {
+                const response = await axios.post(`${API_URL}/NEWtransaction.php`, updatedRecord);
+                console.log('Record created successfully:', response.data);
+                // Optionally, reset the form or update state after successful creation
+            } catch (error) {
+                console.error('Error creating record:', error);
+            }
+        }
 
 
-        //NEW INCOME
-        console.log('New income sent');
+        //UPDATE RECORD
 
-
-        //EDIT EXPENSE
-        console.log('Edited expense sent');
-
-
-        //EDIT INCOME
-        console.log('Edited income sent');
 
 
         // Pass updated record to parent component
@@ -118,7 +119,7 @@ export default ({record, onClose, mode}) => {
                         <div id="apartado-holder" className="form-group col-2">
                             <label>Budget</label>
                             <select className="apartados input-lg form-control" name="apartado" value={updatedRecord.apartado || ''} onChange={handleInputChange} >
-                                <option></option>
+                                <option key="0"></option>
                                 {apartados.map((apartado) => (
                                 <option key={apartado.id} value={apartado.nombre}>
                                     {apartado.nombre}
@@ -137,7 +138,7 @@ export default ({record, onClose, mode}) => {
         
 
                             <select className="method input-lg form-control" name="method" value={updatedRecord.method || ''} onChange={handleInputChange}>
-                                <option></option>
+                                <option key="0"></option>
                                 {methods.map((method) => (
                                 <option key={method.id} value={method.nombre}>
                                     {method.nombre}

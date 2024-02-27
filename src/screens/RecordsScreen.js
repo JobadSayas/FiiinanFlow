@@ -69,7 +69,7 @@ const RecordsScreen = () =>  {
     //Open existing record in pop up
     const handleRecordClick = (record) => {
         setPopupVisible(true);
-        setPopupMode('edit');
+        setPopupMode('update');
 
         setSelectedRecord(record);
     };
