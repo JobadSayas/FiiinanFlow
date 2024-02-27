@@ -77,7 +77,7 @@ export default ({record, onClose, mode}) => {
             try {
                 const response = await axios.post(`${API_URL}/NEWtransaction.php`, updatedRecord);
                 console.log('Record created successfully:', response.data);
-                // Optionally, reset the form or update state after successful creation
+                onClose(updatedRecord);
             } catch (error) {
                 console.error('Error creating record:', error);
             }
@@ -90,7 +90,7 @@ export default ({record, onClose, mode}) => {
             axios.put(`${API_URL}/NEWtransaction.php`, updatedRecord)
             .then(response => {
                 console.log('Record updated successfully:', response.data);
-                // Handle success response if needed
+                onClose(updatedRecord);
             })
             .catch(error => {
                 console.error('Error updating record:', error);
@@ -98,9 +98,6 @@ export default ({record, onClose, mode}) => {
             });
         }
 
-
-        // Pass updated record to parent component
-        onClose(updatedRecord);
     };
 
 

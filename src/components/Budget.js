@@ -40,8 +40,8 @@ export default ({ name, amount, icon, distribution }) =>  {
 
             <i className="transaction fas fa-plus-circle"></i>
 
-            <div className="opciones">
-                <i className="fas fa-ellipsis-v" onClick={() => setIsMenuOpen(!isMenuOpen) }></i>
+            <div className="opciones" onClick={() => setIsMenuOpen(!isMenuOpen) }>
+                <i className="fas fa-ellipsis-v" ></i>
                 {isMenuOpen && (
                     <ul>
                         <li className="transferencia">Transfer</li>

@@ -23,8 +23,8 @@ export default ({ onRecordOpen, id, description, amount, tipo, method, apartado,
 
     return (
 
-        <li id_movimiento={id} onClick={onRecordOpen} tipo={tipo} method={method} apartado={apartado} className={highlighted == 1 && ("highlighted")}>
-            <div className="area"></div>
+        <li id_movimiento={id} tipo={tipo} method={method} apartado={apartado} className={highlighted == 1 && ("highlighted")}>
+            <div className="area" onClick={onRecordOpen}></div>
             { method && ( <i className={`method ${icono}`} style={{color:color}}></i> )} 
             <span className="fecha" fecha={formatedDate}>{formatedDate}</span>
             <div className="main-line">
@@ -32,8 +32,8 @@ export default ({ onRecordOpen, id, description, amount, tipo, method, apartado,
             </div>
             <span className={`cantidad ${tipo}`}>{amount}</span>
             
-            <div className="opciones">
-                <i className="fas fa-ellipsis-v" onClick={() => setIsMenuOpen(!isMenuOpen) }></i>
+            <div className="opciones" onClick={() => setIsMenuOpen(!isMenuOpen) }>
+                <i className="fas fa-ellipsis-v"></i>
                 {isMenuOpen && (
                     <ul>
                         <li className="cambiar">Change Budget</li>
