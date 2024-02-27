@@ -33,7 +33,7 @@ export default ({ onRecordOpen, id, description, amount, tipo, method, apartado,
             <span className={`cantidad ${tipo}`}>{amount}</span>
             
             <div className="opciones">
-                <i class="fas fa-ellipsis-v" onClick={() => setIsMenuOpen(!isMenuOpen) }></i>
+                <i className="fas fa-ellipsis-v" onClick={() => setIsMenuOpen(!isMenuOpen) }></i>
                 {isMenuOpen && (
                     <ul>
                         <li className="cambiar">Change Budget</li>

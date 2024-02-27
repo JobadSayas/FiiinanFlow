@@ -41,20 +41,20 @@ export default ({realAccount, founds}) =>  {
     return(
 
         <li id="balance">
-            <div class="founds">
-                <i class="fas fa-wallet"></i> 
-                <span class="Label">Founds:</span> 
-                <span class="amount">${(foundsSum).toFixed(2)}</span>
+            <div className="founds">
+                <i className="fas fa-wallet"></i> 
+                <span className="Label">Founds:</span> 
+                <span className="amount">${(foundsSum).toFixed(2)}</span>
             </div>
-            <div class="budgets">
-                <i class="fas fa-chart-pie"></i> 
-                <span class="Label">Budgets:</span> 
-                <span class="amount">${(sumaApartados).toFixed(2)}</span> 
+            <div className="budgets">
+                <i className="fas fa-chart-pie"></i> 
+                <span className="Label">Budgets:</span> 
+                <span className="amount">${(sumaApartados).toFixed(2)}</span> 
             </div>
-            <div class="balance">
-                <i class="fas fa-balance-scale"></i>
-                <span class="Label">Balance:</span> 
-                <span class={`amount ${balance < 0 ? "red" : ""}`} >${balance}</span>
+            <div className="balance">
+                <i className="fas fa-balance-scale"></i>
+                <span className="Label">Balance:</span> 
+                <span className={`amount ${balance < 0 ? "red" : ""}`} >${balance}</span>
             </div>
         </li>
 
