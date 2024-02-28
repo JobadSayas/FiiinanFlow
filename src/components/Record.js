@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import { useMethodData } from '../context/MethodContext';
+import {API_URL} from '../components/Utilities';
 
 
-export default ({ onRecordOpen, id, description, amount, tipo, method, apartado, highlighted, fecha }) =>  {
+export default ({ record, onRecordOpen, onDelete }) =>  {
 
     //ABRIR MENU
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     
-    const fechaDate = new Date(fecha);
+    const fechaDate = new Date(record.fecha_mov);
     const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: 'numeric', minute: '2-digit', hour12: true };
     const formatedDate = fechaDate.toLocaleString('en-US', options);
 
@@ -17,20 +18,37 @@ export default ({ onRecordOpen, id, description, amount, tipo, method, apartado,
     //METHODS
     const methodData = useMethodData();
 
-    const methodInfo = methodData.find(data => data.nombre === method);
+    const methodInfo = methodData.find(data => data.nombre === record.method);
     
     const { icono, color } = methodInfo || {};
 
+
+    //DELETE RECORD
+
+    const handleDelete = async () => {
+        try {
+            const response = await axios.delete(`${API_URL}/NEWtransaction.php`, {
+                data: { id: record.id } // Send record ID in the request body
+            });
+            console.log(response.data.message); // Log success message
+            // Update UI to reflect record deletion (if needed)
+            onDelete(record.id)
+        } catch (error) {
+            console.error('Error deleting record:', error);
+        }
+    };
+
+
     return (
 
-        <li id_movimiento={id} tipo={tipo} method={method} apartado={apartado} className={highlighted == 1 && ("highlighted")}>
+        <li key={record.id} className={record.highlighted == 1 && ("highlighted")}>
             <div className="area" onClick={onRecordOpen}></div>
-            { method && ( <i className={`method ${icono}`} style={{color:color}}></i> )} 
+            { record.method && ( <i className={`method ${icono}`} style={{color:color}}></i> )} 
             <span className="fecha" fecha={formatedDate}>{formatedDate}</span>
             <div className="main-line">
-                <span className="descripcion">{description}</span>
+                <span className="descripcion">{record.descripcion}</span>
             </div>
-            <span className={`cantidad ${tipo}`}>{amount}</span>
+            <span className={`cantidad ${record.tipo}`}>{record.cantidad}</span>
             
             <div className="opciones" onClick={() => setIsMenuOpen(!isMenuOpen) }>
                 <i className="fas fa-ellipsis-v"></i>
@@ -39,7 +57,7 @@ export default ({ onRecordOpen, id, description, amount, tipo, method, apartado,
                         <li className="cambiar">Change Budget</li>
                         <li className="unhighlight">Unhighlight</li>
                         <li className="clone">Duplicate</li>
-                        <li className="borrar">Delete</li>
+                        <li className="borrar" onClick={handleDelete}>Delete</li>
                     </ul>
                 )}
             </div>

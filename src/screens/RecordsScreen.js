@@ -19,9 +19,6 @@ const RecordsScreen = () =>  {
     const icon = state && state.icon ? state.icon : "envelop";
     const amount = state && state.formatedAmmount ? state.formatedAmmount : "";
 
-    // Set a default value for date if not provided
-    const formattedDate = date || "01-01-01";
-
 
     //GET RECORDS
     const [records, setRecords] = useState([]);
@@ -99,6 +96,17 @@ const RecordsScreen = () =>  {
     };
 
 
+    //DELETE RECORD FROM UI
+    const handleDelete = (recordId) => {
+        
+        setRecords(records.filter(record => record.id !== recordId)); // Remove the deleted record from the state
+
+    };
+
+
+
+    
+
   return (
     <div id="movimientos" className='pantalla completa' style={{paddingBottom: '66px'}}>
 
@@ -110,16 +118,9 @@ const RecordsScreen = () =>  {
                 <ul id="lista">
                     {records.map(record => (
                         <Record 
-                            key={record.id}
-                            description={record.descripcion}
-                            amount={record.cantidad}
-                            tipo={record.tipo}
-                            method={record.method}
-                            apartado={record.apartado}
-                            highlighted={record.highlight}
-                            fecha={record.fecha_mov}
                             record={record}
                             onRecordOpen={() => handleRecordClick(record)}
+                            onDelete={handleDelete}
                         />
                     ))}
                 </ul>
