@@ -25,7 +25,7 @@ const RecordsScreen = () =>  {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${API_URL}/NEWlistTransactions.php?apartado=${budget}`);
+                const response = await axios.get(`${API_URL}/NEWlistRecords.php?apartado=${budget}`);
                 const searchData = response.data;
                 setRecords(searchData.records);
                 setSummary(searchData.summary);
