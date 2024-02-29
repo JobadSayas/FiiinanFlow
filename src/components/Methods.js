@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import Method from '../components/Method';
@@ -6,6 +7,19 @@ import Balance from './Balance';
 import {API_URL} from '../components/Utilities';
 
 const Methods = () =>  {
+
+    //NAVEGACION
+    const navigate = useNavigate();
+
+    const handleAccountClick = () => {
+        // Navigate with parameters
+        const icon = methods[0]?.icono;
+        const methodParam = methods[0]?.nombre;
+        const params = { method: methodParam };
+        const queryParams = new URLSearchParams(params).toString();
+        navigate(`/records?${queryParams}`, { state: { icon } });
+    };
+
 
     //METHODS
     const [methods, setMethods] = useState([]);
@@ -51,7 +65,7 @@ const Methods = () =>  {
         <ul id='methods'>
 
             {methods.length > 0 && (
-                <li key="0" className="Account">
+                <li key="0" className="Account" onClick={handleAccountClick}>
                     <i className={methods[0]?.icono} style={{ color: methods[0]?.color }}></i>
                     <div className="name">{methods[0].nombre}</div>
                     <div className="amount">{methods[0].saldo}</div>

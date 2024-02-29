@@ -16,7 +16,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<MainScreen />} />
-        <Route path="/records/:budget/:date?" element={<RecordsScreen />} />
+        <Route path="/records/:budget?/:method?/:type?/:keyword?/:method?/:start_date?/:end_date?" element={<RecordsScreen />} />
         <Route path="/test" element={<TestScreen />} />
       </Routes>
     </Router>

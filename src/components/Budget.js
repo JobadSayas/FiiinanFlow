@@ -21,8 +21,11 @@ const Budget = ({ budget }) =>  {
 
     const handleButtonClick = () => {
         // Navigate with parameters
-        let icon = budget.icono;
-        navigate(`/records/${budgetName}`, { state: { icon } });
+        const icon = budget.icono;
+        const budgetParam = budgetName;
+        const params = { budget: budgetParam };
+        const queryParams = new URLSearchParams(params).toString();
+        navigate(`/records?${queryParams}`, { state: { icon } });
     };
 
 

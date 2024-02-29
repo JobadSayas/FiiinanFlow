@@ -31,7 +31,7 @@ const MainScreen = () =>  {
 
             <Methods/>
 
-            <ul id='chart'></ul>
+            <div id='chart'></div>
 
             <ul id="apartados">
                 {budgets.map(budget => (

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import Record from '../components/Record';
@@ -11,11 +11,28 @@ import { MethodProvider } from '../context/MethodContext';
 const RecordsScreen = () =>  {
     
     //GET PARAMETERS
-    const { budget } = useParams();
+    //Parameters in url
+    const [searchParams] = useSearchParams();
+    const budget = searchParams.get('budget') || '';
+    const method = searchParams.get('method') || '';
+    const type = searchParams.get('type') || '';
+    const keyword = searchParams.get('keyword') || '';
+    const start_date = searchParams.get('start_date') || '';
+    const end_date = searchParams.get('end_date') || '';
+
+    //Hidden parameters
     const location = useLocation();
     const { state } = location;
-
     const icon = state && state.icon ? state.icon : "fas fa-search";
+
+    // Construct query parameters
+    let parameters = "";
+    if (budget !== "") {
+        parameters += `?apartado=${budget}`;
+    }
+    if (method !== "") {
+        parameters += `${parameters === "" ? "?" : "&"}method=${method}`;
+    }
 
 
     //GET RECORDS
@@ -25,7 +42,11 @@ const RecordsScreen = () =>  {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${API_URL}/NEWlistRecords.php?apartado=${budget}`);
+                const response = await axios.get(`${API_URL}/NEWlistRecords.php${parameters}`,{
+                    headers: {
+                        'Content-Type': 'application/json;charset=UTF-8'
+                    }
+                });
                 const searchData = response.data;
                 setRecords(searchData.records);
                 setSummary(searchData.summary);
@@ -35,7 +56,7 @@ const RecordsScreen = () =>  {
         };
     
         fetchData();
-    }, [budget]); // Add budget as a dependency to trigger the effect whenever it changes
+    }, [parameters]); 
 
 
     //DELETE RECORD FROM UI
@@ -109,7 +130,7 @@ const RecordsScreen = () =>  {
     <div id="movimientos" className='pantalla completa' style={{paddingBottom: '66px'}}>
 
             {/* Header */}
-            <h3 className="apartado"><i className={icon}></i> {budget} <span className="saldo">${summary}</span></h3>
+            <h3 className="apartado"><i className={icon}></i> {budget} {method} {type} {start_date}{ start_date?"-":"" }{end_date}<span className="saldo">${summary}</span></h3>
 
             {/* Records list */}
             <MethodProvider>
