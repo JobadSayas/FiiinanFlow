@@ -16,25 +16,27 @@ const RecordsScreen = () =>  {
     const location = useLocation();
     const { state } = location;
 
-    const icon = state && state.icon ? state.icon : "envelop";
-    const amount = state && state.formatedAmmount ? state.formatedAmmount : "";
+    const icon = state && state.icon ? state.icon : "fas fa-search";
 
 
     //GET RECORDS
     const [records, setRecords] = useState([]);
+    const [summary, setSummary] = useState([]);
 
     useEffect(() => {
-    const fetchData = async () => {
-    try {
-        const response = await axios.get(`${API_URL}/movimientos-consultar.php?apartado=${name}`);
-        setRecords(response.data);
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-    };
-
-    fetchData();
-    }, []); // The empty dependency array ensures that this effect runs once on mount
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${API_URL}/NEWlistTransactions.php?apartado=${name}`);
+                const searchData = response.data;
+                setRecords(searchData.records);
+                setSummary(searchData.summary);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+    
+        fetchData();
+    }, [name]); // Add name as a dependency to trigger the effect whenever it changes
 
 
     //POP UP
@@ -111,7 +113,7 @@ const RecordsScreen = () =>  {
     <div id="movimientos" className='pantalla completa' style={{paddingBottom: '66px'}}>
 
             {/* Header */}
-            <h3 className="apartado"><i className={icon}></i> {name} <span className="saldo">${amount}</span></h3>
+            <h3 className="apartado"><i className={icon}></i> {name} <span className="saldo">${summary}</span></h3>
 
             {/* Records list */}
             <MethodProvider>
