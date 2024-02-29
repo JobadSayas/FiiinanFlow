@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import {API_URL} from '../components/Utilities';
 
-export default ({record, onClose, mode}) => {
+const RecordPopUp = ({record, onClose, mode}) => {
 
     //UPDATE RECORD IN PARENT COMPONENT
     const [updatedRecord, setUpdatedRecord] = useState({ ...record });
@@ -65,7 +65,6 @@ export default ({record, onClose, mode}) => {
 
 
     //SUBMIT CHANGES NEW AND EXISTING RECORDS
-
     // Function to handle form submit
     const handleSubmit = async (e) => {
         //Prevent default so that I can put my own functionallity
@@ -73,7 +72,7 @@ export default ({record, onClose, mode}) => {
 
         //NEW RECORD
 
-        if(mode=="new"){
+        if(mode==="new"){
             try {
                 const response = await axios.post(`${API_URL}/NEWtransaction.php`, updatedRecord);
                 console.log('Record created successfully:', response.data);
@@ -86,7 +85,7 @@ export default ({record, onClose, mode}) => {
 
         //UPDATE RECORD
 
-        if(mode=="update"){
+        if(mode==="update"){
             axios.put(`${API_URL}/NEWtransaction.php`, updatedRecord)
             .then(response => {
                 console.log('Record updated successfully:', response.data);
@@ -119,14 +118,14 @@ export default ({record, onClose, mode}) => {
                             <label>Amount 1</label>
                             <div className="input-group">
                             <span className="input-group-addon">$</span>
-                            <input type="number" name="cantidad" className="cantidad form-control input-lg" value={updatedRecord.cantidad || ''} onChange={handleInputChange} />
+                            <input type="number" name="cantidad" className="form-control input-lg" value={updatedRecord.cantidad || ''} onChange={handleInputChange} />
                             </div>
                             {/* <div id="remaining">Remaining: <span className="budget">$0.00</span> </div> */}
                         </div>
 
                         <div id="apartado-holder" className="form-group col-2">
                             <label>Budget</label>
-                            <select className="apartados input-lg form-control" name="apartado" value={updatedRecord.apartado || ''} onChange={handleInputChange} >
+                            <select className="input-lg form-control" name="apartado" value={updatedRecord.apartado || ''} onChange={handleInputChange} >
                                 <option key="0"></option>
                                 {apartados.map((apartado) => (
                                 <option key={apartado.id} value={apartado.nombre}>
@@ -138,14 +137,14 @@ export default ({record, onClose, mode}) => {
 
                         <div className="form-group">
                             <label>Description</label>
-                            <input className="descripcion input-lg form-control" name="descripcion" type="text" value={updatedRecord.descripcion || ''} onChange={handleInputChange} />
+                            <input className="input-lg form-control" name="descripcion" type="text" value={updatedRecord.descripcion || ''} onChange={handleInputChange} />
                         </div>
 
                         <div id="method-holder" className="form-group col-2 col-first">
                             <label>Method</label>
         
 
-                            <select className="method input-lg form-control" name="method" value={updatedRecord.method || ''} onChange={handleInputChange}>
+                            <select className="input-lg form-control" name="method" value={updatedRecord.method || ''} onChange={handleInputChange}>
                                 <option key="0"></option>
                                 {methods.map((method) => (
                                 <option key={method.id} value={method.nombre}>
@@ -157,12 +156,12 @@ export default ({record, onClose, mode}) => {
 
                         <div className="form-group col-2">
                             <label>Date</label>
-                            <input className="descripcion input-lg form-control" name="fecha_mov" type="datetime-local" value={updatedRecord.fecha_mov || ''} onChange={handleInputChange} />
+                            <input className="input-lg form-control" name="fecha_mov" type="datetime-local" value={updatedRecord.fecha_mov || ''} onChange={handleInputChange} />
                         </div>
                     </div>
 
                     <div className="footer">
-                        <div className="cancel btn btn-lg btn-default" onClick={onClose}>Cancel</div>
+                        <div className="btn btn-lg btn-default" onClick={onClose}>Cancel</div>
                         <button className={`btn btn-lg ${updatedRecord.tipo === 'gasto' ? 'btn btn-danger' : 'btn-success'}`} type="submit">Save</button>
                     </div>
 
@@ -171,3 +170,5 @@ export default ({record, onClose, mode}) => {
         </div>
     );
 };
+
+export default RecordPopUp;

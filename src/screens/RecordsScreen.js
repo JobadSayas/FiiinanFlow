@@ -4,7 +4,6 @@ import { useParams, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import Record from '../components/Record';
-import Button from '../components/Button';
 import RecordPopUp from '../components/RecordPopUp';
 import {API_URL} from '../components/Utilities';
 import { MethodProvider } from '../context/MethodContext';
@@ -12,7 +11,7 @@ import { MethodProvider } from '../context/MethodContext';
 const RecordsScreen = () =>  {
     
     //GET PARAMETERS
-    const { name, date } = useParams();
+    const { budget } = useParams();
     const location = useLocation();
     const { state } = location;
 
@@ -26,7 +25,7 @@ const RecordsScreen = () =>  {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${API_URL}/NEWlistTransactions.php?apartado=${name}`);
+                const response = await axios.get(`${API_URL}/NEWlistTransactions.php?apartado=${budget}`);
                 const searchData = response.data;
                 setRecords(searchData.records);
                 setSummary(searchData.summary);
@@ -36,7 +35,15 @@ const RecordsScreen = () =>  {
         };
     
         fetchData();
-    }, [name]); // Add name as a dependency to trigger the effect whenever it changes
+    }, [budget]); // Add budget as a dependency to trigger the effect whenever it changes
+
+
+    //DELETE RECORD FROM UI
+    const handleDelete = (recordId) => {
+        
+        setRecords(records.filter(record => record.id !== recordId)); // Remove the deleted record from the state
+
+    };
 
 
     //POP UP
@@ -57,7 +64,7 @@ const RecordsScreen = () =>  {
         
         setSelectedRecord({
             cantidad: '',
-            apartado: name, 
+            apartado: budget, 
             descripcion: '',
             method: '',
             tipo: 'gasto',
@@ -76,12 +83,12 @@ const RecordsScreen = () =>  {
     // Function to handle record update from popup
     const handlePopupClose = (updatedRecord) => {
 
-        if(popupMode=="update"){
+        if(popupMode==="update"){
             setRecords(records.map(record =>
                 record.id === updatedRecord.id ? updatedRecord : record
             ));
         }
-        else if(popupMode=="new"){
+        else if(popupMode==="new"){
             setRecords([updatedRecord, ...records]);
         }
 
@@ -98,22 +105,11 @@ const RecordsScreen = () =>  {
     };
 
 
-    //DELETE RECORD FROM UI
-    const handleDelete = (recordId) => {
-        
-        setRecords(records.filter(record => record.id !== recordId)); // Remove the deleted record from the state
-
-    };
-
-
-
-    
-
   return (
     <div id="movimientos" className='pantalla completa' style={{paddingBottom: '66px'}}>
 
             {/* Header */}
-            <h3 className="apartado"><i className={icon}></i> {name} <span className="saldo">${summary}</span></h3>
+            <h3 className="apartado"><i className={icon}></i> {budget} <span className="saldo">${summary}</span></h3>
 
             {/* Records list */}
             <MethodProvider>
@@ -130,7 +126,7 @@ const RecordsScreen = () =>  {
 
             {/* Footer */}
             <div className="footer">
-                <Button type="btn-default" onClick={handleBackToMain} >Close</Button>
+                <button className="btn btn-big btn-default" onClick={handleBackToMain}>Close</button>
                 <i className="transaction fas fa-plus-circle" onClick={handleNewRecordClick}></i>
             </div>
 

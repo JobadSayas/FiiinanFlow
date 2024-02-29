@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import {API_URL} from '../components/Utilities';
 
-export default ({realAccount, founds}) =>  {
+const Balance = ({realAccount, founds}) =>  {
 
     //FOUNDS
     let foundsSum = parseFloat(realAccount) + parseFloat(founds);
@@ -29,7 +29,7 @@ export default ({realAccount, founds}) =>  {
     let sumaApartados = 0;
     if (apartados.length > 0) {
         for (let i = 0; i < apartados.length; i++) {
-            if(apartados[i].estatus == 1 && apartados[i].budget == 1 && apartados[i].saldo > 0)
+            if(apartados[i].estatus === 1 && apartados[i].budget === 1 && apartados[i].saldo > 0)
             sumaApartados += parseFloat(apartados[i].saldo);
         }
     }
@@ -61,3 +61,5 @@ export default ({realAccount, founds}) =>  {
     );
 
 }
+
+export default Balance;

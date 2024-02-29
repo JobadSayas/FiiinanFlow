@@ -16,7 +16,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<MainScreen />} />
-        <Route path="/records/:name/:date?" element={<RecordsScreen />} />
+        <Route path="/records/:budget/:date?" element={<RecordsScreen />} />
         <Route path="/test" element={<TestScreen />} />
       </Routes>
     </Router>

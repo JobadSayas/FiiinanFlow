@@ -2,18 +2,28 @@ import React, { useState } from 'react';
 
 import { MultiInsert } from '../components/MultiInsert';
 
-export default () =>  {
-
+const MainMenu = () =>  {
+    
+    //TOGGLE MENU
     const [popOverVisible, setpopOverVisible] = useState(false);
-
+    
     const handleMenuButtonClick = () =>{
         setpopOverVisible(!popOverVisible);
     };
     
-    const handleMultiInsertClick = () => {
+    const closeMenu = () =>{
         setpopOverVisible(false);
+    }
+
+
+    //ACTIONS
+
+    //Multi insert
+    const handleMultiInsertClick = () => {
         MultiInsert(); // Call the imported function
+        closeMenu();
     };
+    
 
     return (<>
 
@@ -26,7 +36,7 @@ export default () =>  {
                     <li><i className="fas fa-calendar-day"></i> Distribute All</li>
                     <li><i className="fas fa-share"></i> Transfer</li>
                     <li onClick={handleMultiInsertClick}><i className="fas fa-clone"></i> Multi Insert</li>
-                    <li><a href="https://docs.google.com/spreadsheets/d/1KYrZ5UuTdmgxbyKIdNya4WZmfAopNfF9SB-tZ7Fpzjw/edit?pli=1#gid=0" target="_blank"><i className="fas fa-external-link-alt"></i> JSON Converter</a></li>
+                    <li><a href="https://docs.google.com/spreadsheets/d/1KYrZ5UuTdmgxbyKIdNya4WZmfAopNfF9SB-tZ7Fpzjw/edit?pli=1#gid=0" target="_blank" rel="noreferrer" onClick={closeMenu}><i className="fas fa-external-link-alt"></i> JSON Converter</a></li>
                 </ul>
             </div>
         )}
@@ -34,4 +44,5 @@ export default () =>  {
     </>);
 };
 
+export default MainMenu;
 

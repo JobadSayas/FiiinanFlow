@@ -6,7 +6,7 @@ import Methods from '../components/Methods';
 import MainMenu from '../components/MainMenu';
 import {API_URL} from '../components/Utilities';
 
-export default () =>  {
+const MainScreen = () =>  {
 
     //BUDGETS   
     const [budgets, setBudgets] = useState([]);
@@ -36,11 +36,7 @@ export default () =>  {
             <ul id="apartados">
                 {budgets.map(budget => (
                     <Budget 
-                        key={budget.id} 
-                        name={budget.nombre} 
-                        amount={budget.saldo} 
-                        icon={budget.icono} 
-                        distribution={budget.reparticion}
+                        budget = {budget}
                     />
                     ))}
             </ul>
@@ -50,4 +46,6 @@ export default () =>  {
         </div>
     );
   
-}
+};
+
+export default MainScreen;

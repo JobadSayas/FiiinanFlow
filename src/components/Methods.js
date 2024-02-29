@@ -5,7 +5,7 @@ import Method from '../components/Method';
 import Balance from './Balance';
 import {API_URL} from '../components/Utilities';
 
-export default () =>  {
+const Methods = () =>  {
 
     //METHODS
     const [methods, setMethods] = useState([]);
@@ -29,7 +29,7 @@ export default () =>  {
     let realAccount = 0;
     if (methods.length > 0) {
         for (let i = 0; i < methods.length; i++) {
-            if(methods[i].realAccount == 1)
+            if(methods[i].realAccount === 1)
                 realAccount += parseFloat(methods[i].saldo);
         }
     }
@@ -40,7 +40,7 @@ export default () =>  {
     let founds = 0;
     if (methods.length > 0) {
         for (let i = 0; i < methods.length; i++) {
-            if(methods[i].found == 1)
+            if(methods[i].found === 1)
                 founds += parseFloat(methods[i].saldo);
         }
     }
@@ -67,14 +67,13 @@ export default () =>  {
             {methods.slice(1).map((method, index) => (
                 <Method 
                     key={index} 
-                    name={method.nombre} 
-                    amount={method.saldo} 
-                    icon={method.icono} 
-                    color={method.color} 
+                    method = {method}
                 />
             ))}
             
         </ul>
 
     );
-}
+};
+
+export default Methods;

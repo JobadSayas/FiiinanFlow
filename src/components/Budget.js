@@ -2,40 +2,39 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-export default ({ name, amount, icon, distribution }) =>  {
+const Budget = ({ budget }) =>  {
 
     //Abrir menu
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     
     //Cambiar nombre
-    const [budgetName, setbudgetName] = useState(name);
+    const [budgetName, setbudgetName] = useState(budget.nombre);
     
-    const changeName = () => {
+    const handleChangeName = () => {
         const newName = prompt("New budget name");
         setbudgetName(newName);
     };
-
-    //Values
-    let formatedAmmount = Number(amount).toFixed(2)
     
+
     //NAVEGACION
     const navigate = useNavigate();
 
     const handleButtonClick = () => {
         // Navigate with parameters
-        navigate(`/records/${budgetName}`, { state: { icon, formatedAmmount } });
+        let icon = budget.icono;
+        navigate(`/records/${budgetName}`, { state: { icon } });
     };
 
 
     return (
 
-        <li apartado={budgetName} id_apartado="" tipo="semanal" reparticion="0">
+        <li key={budget.id} apartado={budgetName} id_apartado="" tipo="semanal" reparticion="0">
 
             <div className="info" onClick={handleButtonClick}>
                 <div className="nombre">
-                    <i className={icon}></i> {budgetName}
+                    <i className={budget.icono}></i> {budgetName}
                 </div>
-                <div className="saldo">${ formatedAmmount }</div>
+                <div className="saldo">${ budget.saldo }</div>
             </div>
 
             <i className="transaction fas fa-plus-circle"></i>
@@ -44,11 +43,11 @@ export default ({ name, amount, icon, distribution }) =>  {
                 <i className="fas fa-ellipsis-v" ></i>
                 {isMenuOpen && (
                     <ul>
-                        <li className="transferencia">Transfer</li>
-                        {distribution !== "0" && <li className="reparticion">Distribute ${distribution}</li>}
-                        <li className="change-name" onClick={changeName}>Change Name</li>
-                        <li className="change-repartition">Change Repartition</li>
-                        <li className="hide-apartado">Hide</li>
+                        <li className="disabled">Transfer</li>
+                        {budget.distribution !== "0" && <li className="disabled">Distribute ${budget.distribution}</li>}
+                        <li className="disabled" onClick={handleChangeName}>Change Name</li>
+                        <li className="disabled">Change Repartition</li>
+                        <li className="disabled">Hide</li>
                     </ul>
                 )}
             </div>
@@ -57,3 +56,5 @@ export default ({ name, amount, icon, distribution }) =>  {
     );
   
 }
+
+export default Budget;

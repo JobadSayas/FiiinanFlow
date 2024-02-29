@@ -5,7 +5,7 @@ import { useMethodData } from '../context/MethodContext';
 import {API_URL} from '../components/Utilities';
 
 
-export default ({ record, onRecordOpen, onDelete }) =>  {
+const Record = ({ record, onRecordOpen, onDelete }) =>  {
 
     //ABRIR MENU
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -41,7 +41,7 @@ export default ({ record, onRecordOpen, onDelete }) =>  {
 
     return (
 
-        <li key={record.id} className={record.highlighted == 1 && ("highlighted")}>
+        <li key={record.id} className={record.highlighted === 1 && ("highlighted")}>
             <div className="area" onClick={onRecordOpen}></div>
             { record.method && ( <i className={`method ${icono}`} style={{color:color}}></i> )} 
             <span className="fecha" fecha={formatedDate}>{formatedDate}</span>
@@ -54,10 +54,9 @@ export default ({ record, onRecordOpen, onDelete }) =>  {
                 <i className="fas fa-ellipsis-v"></i>
                 {isMenuOpen && (
                     <ul>
-                        <li className="cambiar">Change Budget</li>
-                        <li className="unhighlight">Unhighlight</li>
-                        <li className="clone">Duplicate</li>
-                        <li className="borrar" onClick={handleDelete}>Delete</li>
+                        <li className="disabled">Unhighlight</li>
+                        <li className="disabled">Duplicate</li>
+                        <li onClick={handleDelete}>Delete</li>
                     </ul>
                 )}
             </div>
@@ -65,4 +64,6 @@ export default ({ record, onRecordOpen, onDelete }) =>  {
 
     );
   
-}
+};
+
+export default Record;
