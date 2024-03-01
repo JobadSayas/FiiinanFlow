@@ -16,14 +16,23 @@ const MainMenu = () =>  {
     }
 
 
+    //RELOAD PAGE
+
+    const handleReload = () => {
+        window.location.reload();
+    };
+
     //MULTI INSERT
 
     const handleMultiInsert = () => {
         // Get json recods
         let userInput = prompt("Insert JSON");
-        let curatedObject = userInput.replace(/'/g, '"');
-        let records = JSON.parse(curatedObject);
-        multiInsertAPI(records);
+        closeMenu();
+        if (userInput !== null){
+            let curatedObject = userInput.replace(/'/g, '"');
+            let records = JSON.parse(curatedObject);
+            multiInsertAPI(records);
+        }
     };
 
     // Create records
@@ -31,6 +40,7 @@ const MainMenu = () =>  {
         axios.post(`${API_URL}/NEWmultiInsert.php`, { records })
             .then(response => {
                 console.log('API response:', response.data);
+                handleReload();
             })
             .catch(error => {
                 console.error('There was a problem with the request:', error);
@@ -61,7 +71,8 @@ const MainMenu = () =>  {
         let origin = methodSelector(prompt("Transfer from:\n1:Account / 2:Online CC / 3:Jobad CC / 4:Maddie CC / 5:Respaldo CC / 6:Amazon CC / 7:Paypal CC / 8:Cash / 9:Savings / 10:Stock"));
         let destiny = methodSelector(prompt("To:\n1:Account / 2:Online CC / 3:Jobad CC / 4:Maddie CC / 5:Respaldo CC / 6:Amazon CC / 7:Paypal CC / 8:Cash / 9:Savings / 10:Stock"));
         let amount = prompt("amount");
-        if (origin !== null && destiny !== null){
+        closeMenu();
+        if (origin !== null && destiny !== null && amount !== null){
             transferAPI(origin, destiny, amount);
         }
     };
@@ -72,6 +83,7 @@ const MainMenu = () =>  {
 
             .then(response => {
                 console.log('API response:', response.data);
+                handleReload();
             })
             .catch(error => {
                 console.error('There was a problem with the request:', error);

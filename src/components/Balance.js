@@ -29,7 +29,7 @@ const Balance = ({realAccount, founds}) =>  {
     let sumaApartados = 0;
     if (apartados.length > 0) {
         for (let i = 0; i < apartados.length; i++) {
-            if(apartados[i].estatus === 1 && apartados[i].budget === 1 && apartados[i].saldo > 0)
+            if(apartados[i].estatus === '1' && apartados[i].budget === '1' && apartados[i].saldo > 0)
             sumaApartados += parseFloat(apartados[i].saldo);
         }
     }

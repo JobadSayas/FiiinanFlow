@@ -43,9 +43,11 @@ const Methods = () =>  {
     let realAccount = 0;
     if (methods.length > 0) {
         for (let i = 0; i < methods.length; i++) {
-            if(methods[i].realAccount === 1)
-                realAccount += parseFloat(methods[i].saldo);
+            if(methods[i].realAccount === '1')
+            realAccount += parseFloat(methods[i].saldo);
+            console.log(realAccount)
         }
+        realAccount = realAccount.toFixed(2)
     }
 
 
@@ -54,7 +56,7 @@ const Methods = () =>  {
     let founds = 0;
     if (methods.length > 0) {
         for (let i = 0; i < methods.length; i++) {
-            if(methods[i].found === 1)
+            if(methods[i].found === '1')
                 founds += parseFloat(methods[i].saldo);
         }
     }
@@ -68,8 +70,8 @@ const Methods = () =>  {
                 <li key="0" className="Account" onClick={handleAccountClick}>
                     <i className={methods[0]?.icono} style={{ color: methods[0]?.color }}></i>
                     <div className="name">{methods[0].nombre}</div>
-                    <div className="amount">{methods[0].saldo}</div>
-                    <div className="realAccount">(${(realAccount).toFixed(2)})</div>
+                    <div className="amount">${methods[0].saldo}</div>
+                    <div className="realAccount">${realAccount}</div>
                 </li>
             )}
 

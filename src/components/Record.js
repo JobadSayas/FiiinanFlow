@@ -43,9 +43,14 @@ const Record = ({ record, onRecordOpen, onDelete }) =>  {
 
         <li key={record.id} className={record.highlighted === 1 && ("highlighted")}>
             <div className="area" onClick={onRecordOpen}></div>
-            { record.method && ( <i className={`method ${icono}`} style={{color:color}}></i> )} 
+            { record.method && ( 
+            <i className={`method ${icono}`} style={{color:color}}></i>
+            )} 
             <span className="fecha" fecha={formatedDate}>{formatedDate}</span>
             <div className="main-line">
+                {record.apartado && (
+                <span class="etiqueta">{record.apartado}</span>
+                )}
                 <span className="descripcion">{record.descripcion}</span>
             </div>
             <span className={`cantidad ${record.tipo}`}>{record.cantidad}</span>

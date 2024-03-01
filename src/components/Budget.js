@@ -37,7 +37,7 @@ const Budget = ({ budget }) =>  {
                 <div className="nombre">
                     <i className={budget.icono}></i> {budgetName}
                 </div>
-                <div className="saldo">${ budget.saldo }</div>
+                <div className={`saldo ${budget.saldo < 0 ? "red" : ""}`}>${ budget.saldo }</div>
             </div>
 
             <i className="transaction fas fa-plus-circle"></i>
