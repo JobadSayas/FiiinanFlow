@@ -23,11 +23,11 @@ const MainMenu = () =>  {
         let userInput = prompt("Insert JSON");
         let curatedObject = userInput.replace(/'/g, '"');
         let records = JSON.parse(curatedObject);
-        handleInsertRecords(records);
+        multiInsertAPI(records);
     };
 
     // Create records
-    const handleInsertRecords = (records) => {
+    const multiInsertAPI = (records) => {
         axios.post(`${API_URL}/NEWmultiInsert.php`, { records })
             .then(response => {
                 console.log('API response:', response.data);
@@ -36,6 +36,48 @@ const MainMenu = () =>  {
                 console.error('There was a problem with the request:', error);
             });
     };
+
+
+    //TRANSFER
+
+    const methodSelector = (selection) => {
+        switch (selection) {
+            case '1': return "Account";
+            case '2': return "Online CC";
+            case '3': return "Jobad CC";
+            case '4': return "Maddie CC";
+            case '5': return "Respaldo CC";
+            case '6': return "Amazon CC";
+            case '7': return "Paypal CC";
+            case '8': return "Cash";
+            case '9': return "Savings";
+            case '10': return "Stock";
+            default: return selection;
+        }
+    };
+
+    const handleTransfer = () => {
+        // Get json recods
+        let origin = methodSelector(prompt("Transfer from:\n1:Account / 2:Online CC / 3:Jobad CC / 4:Maddie CC / 5:Respaldo CC / 6:Amazon CC / 7:Paypal CC / 8:Cash / 9:Savings / 10:Stock"));
+        let destiny = methodSelector(prompt("To:\n1:Account / 2:Online CC / 3:Jobad CC / 4:Maddie CC / 5:Respaldo CC / 6:Amazon CC / 7:Paypal CC / 8:Cash / 9:Savings / 10:Stock"));
+        let amount = prompt("amount");
+        if (origin !== null && destiny !== null){
+            transferAPI(origin, destiny, amount);
+        }
+    };
+
+    // Create records
+    const transferAPI = (origin, destiny, amount) => {
+        axios.post(`${API_URL}/NEWtransfer.php`, `origin=${origin}&destiny=${destiny}&amount=${amount}`)
+
+            .then(response => {
+                console.log('API response:', response.data);
+            })
+            .catch(error => {
+                console.error('There was a problem with the request:', error);
+            });
+    };
+
     
 
     return (<>
@@ -45,9 +87,9 @@ const MainMenu = () =>  {
         {popOverVisible &&(
             <div id="menu" className="desplegado">
                 <ul>
-                    <li><i className="fas fa-clipboard-list"></i> Advanced Report</li>
-                    <li><i className="fas fa-calendar-day"></i> Distribute All</li>
-                    <li><i className="fas fa-share"></i> Transfer</li>
+                    <li className='disabled'><i className="fas fa-clipboard-list"></i> Advanced Report</li>
+                    <li className='disabled'><i className="fas fa-calendar-day"></i> Distribute All</li>
+                    <li onClick={handleTransfer}><i className="fas fa-share"></i> Transfer</li>
                     <li onClick={handleMultiInsert}><i className="fas fa-clone"></i> Multi Insert</li>
                     <li><a href="https://docs.google.com/spreadsheets/d/1KYrZ5UuTdmgxbyKIdNya4WZmfAopNfF9SB-tZ7Fpzjw/edit?pli=1#gid=0" target="_blank" rel="noreferrer" onClick={closeMenu}><i className="fas fa-external-link-alt"></i> JSON Converter</a></li>
                 </ul>
