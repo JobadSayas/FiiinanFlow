@@ -90,6 +90,20 @@ const MainMenu = () =>  {
             });
     };
 
+
+    //DISTRIBUITE ALL
+
+    const handleDistribuiteAll = () => {
+        axios.post(`${API_URL}/NEWdistribuite.php?budget=*`)
+        .then(response => {
+            console.log('API response:', response.data);
+            handleReload();
+        })
+        .catch(error => {
+            console.error('There was a problem with the request:', error);
+        });
+
+    };
     
 
     return (<>
@@ -100,7 +114,7 @@ const MainMenu = () =>  {
             <div id="menu" className="desplegado">
                 <ul>
                     <li className='disabled'><i className="fas fa-clipboard-list"></i> Advanced Report</li>
-                    <li className='disabled'><i className="fas fa-calendar-day"></i> Distribute All</li>
+                    <li onClick={handleDistribuiteAll}><i className="fas fa-calendar-day"></i> Distribute All</li>
                     <li onClick={handleTransfer}><i className="fas fa-share"></i> Transfer</li>
                     <li onClick={handleMultiInsert}><i className="fas fa-clone"></i> Multi Insert</li>
                     <li><a href="https://docs.google.com/spreadsheets/d/1KYrZ5UuTdmgxbyKIdNya4WZmfAopNfF9SB-tZ7Fpzjw/edit?pli=1#gid=0" target="_blank" rel="noreferrer" onClick={closeMenu}><i className="fas fa-external-link-alt"></i> JSON Converter</a></li>
