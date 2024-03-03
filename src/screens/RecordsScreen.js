@@ -19,6 +19,7 @@ const RecordsScreen = () =>  {
     const keyword = searchParams.get('keyword') || '';
     const start_date = searchParams.get('start_date') || '';
     const end_date = searchParams.get('end_date') || '';
+    const limit = searchParams.get('limit') || '';
 
     //Hidden parameters
     const location = useLocation();
@@ -32,6 +33,21 @@ const RecordsScreen = () =>  {
     }
     if (method !== "") {
         parameters += `${parameters === "" ? "?" : "&"}method=${method}`;
+    }
+    if (type !== "") {
+        parameters += `${parameters === "" ? "?" : "&"}type=${type}`;
+    }
+    if (keyword !== "") {
+        parameters += `${parameters === "" ? "?" : "&"}keyword=${keyword}`;
+    }
+    if (start_date !== "") {
+        parameters += `${parameters === "" ? "?" : "&"}start_date=${start_date}`;
+    }
+    if (end_date !== "") {
+        parameters += `${parameters === "" ? "?" : "&"}end_date=${end_date}`;
+    }
+    if (limit !== "") {
+        parameters += `${parameters === "" ? "?" : "&"}limit=${limit}`;
     }
 
 

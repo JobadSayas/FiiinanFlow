@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { API_URL } from '../components/Utilities';
 
@@ -104,6 +105,17 @@ const MainMenu = () =>  {
         });
 
     };
+
+
+    //NAVEGACION
+    const navigate = useNavigate();
+
+    const handleLastRecords = () => {
+        // Navigate with parameters
+        const params = { limit: 100 };
+        const queryParams = new URLSearchParams(params).toString();
+        navigate(`/records?${queryParams}`);
+    };
     
 
     return (<>
@@ -113,7 +125,8 @@ const MainMenu = () =>  {
         {popOverVisible &&(
             <div id="menu" className="desplegado">
                 <ul>
-                    <li className='disabled'><i className="fas fa-clipboard-list"></i> Advanced Report</li>
+                    <li className='disabled'><i className="fas fa-clipboard-list"></i> Search</li>
+                    <li onClick={handleLastRecords}><i className="fas fa-calendar-day"></i> Last records</li>
                     <li onClick={handleDistribuiteAll}><i className="fas fa-calendar-day"></i> Distribute All</li>
                     <li onClick={handleTransfer}><i className="fas fa-share"></i> Transfer</li>
                     <li onClick={handleMultiInsert}><i className="fas fa-clone"></i> Multi Insert</li>
@@ -123,6 +136,7 @@ const MainMenu = () =>  {
         )}
 
     </>);
+
 };
 
 export default MainMenu;
