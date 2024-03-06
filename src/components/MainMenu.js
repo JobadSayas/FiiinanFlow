@@ -95,15 +95,30 @@ const MainMenu = () =>  {
     //DISTRIBUITE ALL
 
     const handleDistribuiteAll = () => {
-        axios.post(`${API_URL}/NEWdistribuite.php?budget=*`)
-        .then(response => {
-            console.log('API response:', response.data);
-            handleReload();
-        })
-        .catch(error => {
-            console.error('There was a problem with the request:', error);
-        });
-
+        let answer = prompt("Enter 1 to use current date or enter specific date\nYYYY-MM-DD");
+        let selectedDate = "";
+        
+        if(answer!==null){
+            if(answer==="1"){
+                const date = new Date();
+                //This because the time was coming in UTD, to transform to CST
+                const localDate = new Date(date.getTime() - (date.getTimezoneOffset() * 60000));
+                // Transforms the date in the right format YYYY-MM-DDTHH:MM
+                selectedDate = localDate.toISOString().slice(0, 16);
+            }
+            else{
+                selectedDate = `${answer}T12:00`;
+            }
+            
+            axios.post(`${API_URL}/NEWdistribuite.php?budget=*&date=${selectedDate}`)
+            .then(response => {
+                console.log('API response:', response.data);
+                handleReload();
+            })
+            .catch(error => {
+                console.error('There was a problem with the request:', error);
+            });
+        }
     };
 
 
