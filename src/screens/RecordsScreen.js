@@ -147,7 +147,7 @@ const RecordsScreen = () =>  {
     <div id="movimientos" className='pantalla completa' style={{paddingBottom: '66px'}}>
 
             {/* Header */}
-            <h3 className="apartado"><i className={icon}></i> {keyword} {budget} {method} {type} {start_date}{ start_date?"-":"" }{end_date}<span className="saldo">${summary}</span></h3>
+            <h3 className="apartado"><i className={icon}></i> {keyword} {budget} {method} {type} {start_date}{ start_date?" - ":"" }{end_date} | <span className="saldo">${summary}</span></h3>
 
             {/* Records list */}
             <MethodProvider>

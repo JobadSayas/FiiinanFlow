@@ -125,12 +125,39 @@ const MainMenu = () =>  {
     //NAVEGACION
     const navigate = useNavigate();
 
+
+    //LAST 100 RECORDS
     const handleLastRecords = () => {
         // Navigate with parameters
         const params = { limit: 100 };
         const queryParams = new URLSearchParams(params).toString();
         navigate(`/records?${queryParams}`);
     };
+
+
+    //SEARCH
+    const handleSearch = () =>{
+
+        let answer = prompt("What type of search?\n1:By keywords 2:By date");
+        let params = "";
+
+        if(answer!==null){
+            if(answer==="1"){
+                let keyword = prompt("Enter keywords to search");
+                params = { keyword: keyword };
+            }
+            else{
+                let startDate = prompt("Star date in format YYYY-MM-DD");
+                let endDate = prompt("Enter end date in format YYYY-MM-DD");
+                params = { start_date: startDate, end_date: endDate };
+            }
+
+            // Navigate with parameters
+            const queryParams = new URLSearchParams(params).toString();
+            navigate(`/records?${queryParams}`);
+            }
+
+    }
     
 
     return (<>
@@ -140,8 +167,8 @@ const MainMenu = () =>  {
         {popOverVisible &&(
             <div id="menu" className="desplegado">
                 <ul>
-                    <li className='disabled'><i className="fas fa-clipboard-list"></i> Search</li>
-                    <li onClick={handleLastRecords}><i className="fas fa-calendar-day"></i> Last records</li>
+                    <li onClick={handleSearch}><i className="fas fa-search"></i> Search</li>
+                    <li onClick={handleLastRecords}><i className="fas fa-list"></i> Last records</li>
                     <li onClick={handleDistribuiteAll}><i className="fas fa-calendar-day"></i> Distribute All</li>
                     <li onClick={handleTransfer}><i className="fas fa-share"></i> Transfer</li>
                     <li onClick={handleMultiInsert}><i className="fas fa-clone"></i> Multi Insert</li>
