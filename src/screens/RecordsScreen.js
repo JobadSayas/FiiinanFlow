@@ -35,7 +35,7 @@ const RecordsScreen = () =>  {
         parameters += `${parameters === "" ? "?" : "&"}method=${method}`;
     }
     if (type !== "") {
-        parameters += `${parameters === "" ? "?" : "&"}type=${type}`;
+        parameters += `${parameters === "" ? "?" : "&"}tipo=${type}`;
     }
     if (keyword !== "") {
         parameters += `${parameters === "" ? "?" : "&"}keyword=${keyword}`;
