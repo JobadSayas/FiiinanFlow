@@ -74,7 +74,7 @@ const Budget = ({ budget }) =>  {
                 <div className={`saldo ${budget.saldo < 0 ? "red" : ""}`}>${ budget.saldo }</div>
             </div>
 
-            <i className="transaction fas fa-plus-circle"></i>
+            <i className="transaction fas fa-plus-circle disabled"></i>
 
             <div className="opciones" onClick={() => setIsMenuOpen(!isMenuOpen) }>
                 <i className="fas fa-ellipsis-v" ></i>
