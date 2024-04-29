@@ -71,7 +71,7 @@ const Methods = () =>  {
                     <i className={methods[0]?.icono} style={{ color: methods[0]?.color }}></i>
                     <div className="name">{methods[0].nombre}</div>
                     <div className="amount">${methods[0].saldo}</div>
-                    <div className="realAccount">${realAccount}</div>
+                    <div className="realAccount">(${realAccount})</div>
                 </li>
             )}
 
