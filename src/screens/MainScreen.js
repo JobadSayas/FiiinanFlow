@@ -77,7 +77,7 @@ const MainScreen = () =>  {
             case 'Search':
                 return <SearchPopupBody passMainAction={setMainAction}/>;
             case 'Transfer':
-                return <TransferPopupBody />;
+                return <TransferPopupBody passMainAction={setMainAction}/>;
             case 'Multi insert':
                 return <MultiInsertPopupBody  passMainAction={setMainAction}/>;
             case 'Distribute all':
