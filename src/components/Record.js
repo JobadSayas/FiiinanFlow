@@ -49,7 +49,7 @@ const Record = ({ record, onRecordOpen, onDelete }) =>  {
             <span className="fecha" fecha={formatedDate}>{formatedDate}</span>
             <div className="main-line">
                 {record.apartado && (
-                <span class="etiqueta">{record.apartado}</span>
+                <span className="etiqueta">{record.apartado}</span>
                 )}
                 <span className="descripcion">{record.descripcion}</span>
             </div>

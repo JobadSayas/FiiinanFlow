@@ -44,9 +44,7 @@ const Methods = () =>  {
     if (methods.length > 0) {
         for (let i = 0; i < methods.length; i++) {
             if(methods[i].realAccount === '1')
-            realAccount += parseFloat(methods[i].saldo);
-            console.log(realAccount)
-        }
+            realAccount += parseFloat(methods[i].saldo);        }
         realAccount = realAccount.toFixed(2)
     }
 
