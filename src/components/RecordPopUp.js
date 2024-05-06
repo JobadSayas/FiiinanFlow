@@ -112,9 +112,9 @@ const RecordPopUp = ({record, onClose, mode}) => {
                         <li className="modify full">Modify</li>
                     </ul>
 
-                    <div className="body">
+                    <div className="body grid-holder">
 
-                        <div className="form-group col-2 col-first">
+                        <div className="form-group">
                             <label>Amount 1</label>
                             <div className="input-group">
                             <span className="input-group-addon">$</span>
@@ -123,7 +123,7 @@ const RecordPopUp = ({record, onClose, mode}) => {
                             {/* <div id="remaining">Remaining: <span className="budget">$0.00</span> </div> */}
                         </div>
 
-                        <div id="apartado-holder" className="form-group col-2">
+                        <div id="apartado-holder" className="form-group">
                             <label>Budget</label>
                             <select className="input-lg form-control" name="apartado" value={updatedRecord.apartado || ''} onChange={handleInputChange} >
                                 <option key="0"></option>
@@ -135,12 +135,12 @@ const RecordPopUp = ({record, onClose, mode}) => {
                             </select>
                         </div>
 
-                        <div className="form-group">
+                        <div className="form-group grid-double">
                             <label>Description</label>
                             <input className="input-lg form-control" name="descripcion" type="text" value={updatedRecord.descripcion || ''} onChange={handleInputChange} />
                         </div>
 
-                        <div id="method-holder" className="form-group col-2 col-first">
+                        <div id="method-holder" className="form-group">
                             <label>Method</label>
         
 
@@ -154,13 +154,13 @@ const RecordPopUp = ({record, onClose, mode}) => {
                             </select>
                         </div>
 
-                        <div className="form-group col-2">
+                        <div className="form-group">
                             <label>Date</label>
                             <input className="input-lg form-control" name="fecha_mov" type="datetime-local" value={updatedRecord.fecha_mov || ''} onChange={handleInputChange} />
                         </div>
                     </div>
 
-                    <div className="footer">
+                    <div className="footer grid-holder">
                         <div className="btn btn-lg btn-default" onClick={onClose}>Cancel</div>
                         <button className={`btn btn-lg ${updatedRecord.tipo === 'gasto' ? 'btn btn-danger' : 'btn-success'}`} type="submit">Save</button>
                     </div>

@@ -16,7 +16,7 @@ const GenericPopUp = ({children, onClose, title, onMainAction}) =>  {
                     <div className="body">
                         {children} 
                     </div>
-                    <div className="footer">
+                    <div className="footer grid-holder">
                         <div onClick={onClose} className="btn btn-lg btn-default" >Cancel</div>
                         <button className="btn btn-lg btn-primary" onClick={handleMainAction}>Confirm</button>
                     </div>

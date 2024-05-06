@@ -48,6 +48,23 @@ padding-left: 2px;
 padding-left:0;
 }
 
+/*FORM AND GRID---------------------------*/
+
+.grid-holder{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+}
+
+  .grid-holder .form-group{
+    margin-bottom: 0;
+  }
+
+  .grid-double{
+    grid-column: span 2;
+  }
+
+
 /*PRINCIPAL---------------------------*/
 
 #apartados{
@@ -443,9 +460,6 @@ padding-left:0;
 .pantalla.modal .footer {
   padding: 10px 15px 10px;
   text-align: center;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 15px;
 }
 .pantalla.modal .footer .btn {
   width: 100%;
@@ -951,10 +965,9 @@ i.transaction{
     list-style: none;
     margin: 0;
     padding: 0;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 4px; /* 4 pixels between each grid item */    
-    width: 100%;
     grid-gap: 6px;
 }
 
