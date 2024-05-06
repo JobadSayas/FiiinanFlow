@@ -71,9 +71,9 @@ const TransferPopupBody = ({passMainAction}) =>  {
 
 
     return (
-        <div className='row'>
+        <div className='grid-holder' style={{ paddingBottom: '10px' }}>
 
-            <div className="form-group col-md-6">
+            <div className="form-group">
                 <label>From</label>
                 <select className="input-lg form-control" value={origin} onChange={handleoriginChange}>
                     <option key="0"></option>
@@ -85,7 +85,7 @@ const TransferPopupBody = ({passMainAction}) =>  {
                 </select>
             </div>
 
-            <div className="form-group col-md-6">
+            <div className="form-group">
                 <label>To</label>
                 <select className="input-lg form-control" value={destiny} onChange={handledestinyChange}>
                     <option key="0"></option>
@@ -97,7 +97,7 @@ const TransferPopupBody = ({passMainAction}) =>  {
                 </select>
             </div>
 
-            <div className="form-group col-md-12">
+            <div className="form-group">
                 <label>Amount</label>
                 <div class="input-group">
                     <span class="input-group-addon">$</span>
