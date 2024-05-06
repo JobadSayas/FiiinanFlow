@@ -115,7 +115,7 @@ const RecordPopUp = ({record, onClose, mode}) => {
                     <div className="body grid-holder">
 
                         <div className="form-group">
-                            <label>Amount 1</label>
+                            <label>Amount</label>
                             <div className="input-group">
                             <span className="input-group-addon">$</span>
                             <input type="number" name="cantidad" className="form-control input-lg" value={updatedRecord.cantidad || ''} onChange={handleInputChange} />
@@ -156,7 +156,7 @@ const RecordPopUp = ({record, onClose, mode}) => {
 
                         <div className="form-group">
                             <label>Date</label>
-                            <input className="input-lg form-control" name="fecha_mov" type="datetime-local" value={updatedRecord.fecha_mov || ''} onChange={handleInputChange} />
+                            <input className="input-lg form-control" name="fecha_mov" type="datetime-local" value={updatedRecord.fecha_mov || ''} onChange={handleInputChange} style={{fontSize:'14px'}} />
                         </div>
                     </div>
 

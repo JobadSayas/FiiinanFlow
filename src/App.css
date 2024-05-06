@@ -64,6 +64,10 @@ padding-left:0;
     grid-column: span 2;
   }
 
+  .input-group-addon:first-child{
+    border-radius: 0;
+  }
+
 
 /*PRINCIPAL---------------------------*/
 
@@ -1351,7 +1355,7 @@ animation: blinker 0.8s linear infinite;
 }
 
 
-/*MOBILE WEB---------------------------*/
+/*MOBILE VERSION---------------------------*/
 
 @media (max-width: 999px){
 
@@ -1366,4 +1370,23 @@ animation: blinker 0.8s linear infinite;
   #apartados{
       grid-template-columns: repeat(1, 1fr);
   }
+
+  .grid-holder{
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .grid-double{
+    grid-column: initial;
+  }
+
+  .grid-holder .btn-primary,
+  .grid-holder .btn-success,
+  .grid-holder .btn-danger{
+    order: 1;
+  }
+
+  .grid-holder .btn-default{
+    order: 2;
+  }
+
 }
