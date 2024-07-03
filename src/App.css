@@ -402,16 +402,19 @@ padding-left:0;
   top: 0;
   left: 0;
 }
+
 .pantalla.modal {
   height: 100vh;
   background-color: transparent;
   z-index: 4;
 }
+
 .pantalla.modal p {
   font-size: 18px;
   margin: 2px 5px 0px;
   line-height: 21px;
 }
+
 .centrar {
   display: flex;
   top: 0;
@@ -426,6 +429,7 @@ padding-left:0;
   /* background: #303030; */
   /* position: absolute; */
 }
+
 .modal-holder {
   width: calc(100% - 30px);
   max-width: 350px;
@@ -438,9 +442,11 @@ padding-left:0;
   border-radius: 0;
   max-width: 500px;
 }
+
 .pantalla.modal{
     display: block;
 }
+
 .pantalla.modal .header {
   font-size: 18px;
   height: 40px;
@@ -449,27 +455,40 @@ padding-left:0;
   padding: 7px 17px;
   margin-bottom: 10px;
 }
+
 .pantalla.modal .body {
   min-height: initial;
   height: auto;
   padding: 0 15px 0;
   background: transparent;
-  /* max-height: 158px; */
-  overflow: auto;
+  overflow: hidden;
 }
+
   .pantalla.modal .body .auxiliar{
       margin-top: 5px;
       margin-bottom: -2px;
   }
+
+  .pantalla.modal .body .tabs{
+    margin-left: -15px;
+    width: calc(100% + 30px);
+  }
+
+    .pantalla.modal .body .tabs .active{
+      background-color: #337ab7;
+    }
+
 .pantalla.modal .footer {
   padding: 10px 15px 10px;
   text-align: center;
 }
+
 .pantalla.modal .footer .btn {
   width: 100%;
   border-radius: 0;
   border: none;
 }
+
 .pantalla.modal .footer .btn.solitario{
   width: 100%;
 }
@@ -863,7 +882,7 @@ color: white;
 /*Tabs */
 
 
-#transaction .tabs{
+.modal .tabs{
   padding: 0;
   list-style: none;
   border-bottom: 1px solid #303030;
@@ -872,7 +891,7 @@ color: white;
   height: 41px;
 }
 
-  #transaction .tabs li{
+  .modal .tabs li{
       float: left;
       height: 40px;
       width: 50%;
@@ -884,19 +903,7 @@ color: white;
       background: #585858;
       color: white;
   }
-  #transaction .tabs .left{
-      border-radius: 10px 0 0 0;
-      border-radius: 0;
-  }
-  #transaction .tabs .right{
-      border-radius: 0 10px 0 0;
-      border-radius: 0;
-  }
-  #transaction .tabs .full{
-      border-radius: 10px 10px 0 0;
-      width: 100%;
-  }
-  #transaction .body{
+  .modal .body{
       overflow: initial;
       height: auto;
   }
@@ -953,6 +960,7 @@ i.transaction{
 
 #movimientos i.transaction{
   right: 16px;
+  top: 0px;
 }
 
 #remaining{

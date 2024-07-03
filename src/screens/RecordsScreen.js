@@ -20,6 +20,7 @@ const RecordsScreen = () =>  {
     const start_date = searchParams.get('start_date') || '';
     const end_date = searchParams.get('end_date') || '';
     const limit = searchParams.get('limit') || '';
+    const sort = searchParams.get('sort') || '';
 
     //Hidden parameters
     const location = useLocation();
@@ -48,6 +49,9 @@ const RecordsScreen = () =>  {
     }
     if (limit !== "") {
         parameters += `${parameters === "" ? "?" : "&"}limit=${limit}`;
+    }
+    if (sort !== "") {
+        parameters += `${parameters === "" ? "?" : "&"}sort=${sort}`;
     }
 
 

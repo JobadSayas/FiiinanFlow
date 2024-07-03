@@ -35,31 +35,37 @@ const MainScreen = () =>  {
 
     //MENU SELECTION
     const handleMenuSelection = (selection) => {
-
+        
         switch (selection) {
             case 'Search':
                 setPopupVisible(true);
                 setPopupType(selection);
+                setPopupTabs(true);
             break;
             case 'Transfer':
                 setPopupVisible(true);
                 setPopupType(selection);
+                setPopupTabs(false);
             break;
             case 'Multi insert':
                 setPopupVisible(true);
                 setPopupType(selection);
+                setPopupTabs(false);
             break;
             case 'Distribute all':
                 setPopupVisible(true);
                 setPopupType(selection);
+                setPopupTabs(false);
             break;
             case 'New budget':
                 setPopupVisible(true);
                 setPopupType(selection);
+                setPopupTabs(false);
             break;
             case 'Change repartition':
                 setPopupVisible(true);
                 setPopupType(selection);
+                setPopupTabs(false);
             break;
         }
         
@@ -69,13 +75,14 @@ const MainScreen = () =>  {
     //POP UP
     const [popupVisible, setPopupVisible] = useState(false);
     const [popupType, setPopupType] = useState();
+    const [popupTabs, setPopupTabs] = useState(false);
     const [mainAction, setMainAction] = useState(null);
 
     //Get popup content
     const getPopupContent = () => {
         switch (popupType) {
             case 'Search':
-                return <SearchPopupBody passMainAction={setMainAction}/>;
+                return <SearchPopupBody passMainAction={setMainAction} />;
             case 'Transfer':
                 return <TransferPopupBody passMainAction={setMainAction}/>;
             case 'Multi insert':
@@ -130,6 +137,7 @@ const MainScreen = () =>  {
             {popupVisible && (
                 <GenericPopUp
                     title ={popupType}
+                    tabs = {popupTabs}
                     onClose = {handleClosePopup}
                     onMainAction={mainAction}
                 >

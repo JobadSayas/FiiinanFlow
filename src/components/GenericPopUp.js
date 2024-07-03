@@ -1,5 +1,5 @@
 
-const GenericPopUp = ({children, onClose, title, onMainAction}) =>  {
+const GenericPopUp = ({children, onClose, title, tabs, onMainAction}) =>  {
 
     const handleMainAction = () => {
         if (onMainAction) {
@@ -12,8 +12,12 @@ const GenericPopUp = ({children, onClose, title, onMainAction}) =>  {
         <div className="pantalla modal">
             <div className="centrar">
                 <div className="modal-holder">
-                    <div className="header">{title}</div>
+                    {!tabs && (
+                        <div className="header">{title}</div>
+                    )}
+
                     <div className="body">
+                    {tabs}
                         {children} 
                     </div>
                     <div className="footer grid-holder">

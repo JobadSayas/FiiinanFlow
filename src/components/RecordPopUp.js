@@ -109,7 +109,6 @@ const RecordPopUp = ({record, onClose, mode}) => {
                     <ul className="tabs">
                         <li className="expense left" onClick={() => handleTypeButtonClick('gasto')}>Expense</li>
                         <li className="income right" onClick={() => handleTypeButtonClick('ingreso')}>Income</li>
-                        <li className="modify full">Modify</li>
                     </ul>
 
                     <div className="body grid-holder">
