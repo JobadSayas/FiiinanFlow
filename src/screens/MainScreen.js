@@ -105,45 +105,49 @@ const MainScreen = () =>  {
 
     return (
 
-        <div id="principal" className='pantalla completa' style={{paddingBottom: '66px'}}>
+        <div style={{background:"white"}}> hola
 
-            {/* TOP TILES */}
-            <div id="tilesHolder">
-                <div id="tileMethod">
-                    <Methods/>
+            <div id="principal" className='pantalla completa' style={{paddingBottom: '66px'}}>
+
+                {/* TOP TILES */}
+                <div id="tilesHolder">
+                    <div id="tileMethod">
+                        <Methods/>
+                    </div>
+                    <div id="tileChart">
+                        <LineChart />
+                    </div>
                 </div>
-                <div id="tileChart">
-                    <LineChart />
-                </div>
-            </div>
 
 
-            {/* BUDGETS LIST */}
-            <ul id="apartados">
-                {budgets.map(budget => (
-                    <Budget 
-                        budget = {budget}
-                    />
-                    ))}
-            </ul>
-        
-            {/* MAIN MENU */}
-            <MainMenu
-                onSelect={handleMenuSelection}
-            />
+                {/* BUDGETS LIST */}
+                <ul id="apartados">
+                    {budgets.map(budget => (
+                        <Budget 
+                            budget = {budget}
+                        />
+                        ))}
+                </ul>
             
+                {/* MAIN MENU */}
+                <MainMenu
+                    onSelect={handleMenuSelection}
+                />
+                
 
-            {/* POP UP */}
-            {popupVisible && (
-                <GenericPopUp
-                    title ={popupType}
-                    tabs = {popupTabs}
-                    onClose = {handleClosePopup}
-                    onMainAction={mainAction}
-                >
-                    {getPopupContent()}
-                </GenericPopUp>
-            )}
+                {/* POP UP */}
+                {popupVisible && (
+                    <GenericPopUp
+                        title ={popupType}
+                        tabs = {popupTabs}
+                        onClose = {handleClosePopup}
+                        onMainAction={mainAction}
+                    >
+                        {getPopupContent()}
+                    </GenericPopUp>
+                )}
+
+            </div>
 
         </div>
     );
