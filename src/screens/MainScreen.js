@@ -105,7 +105,7 @@ const MainScreen = () =>  {
 
     return (
 
-        <div style={{background:"white"}}> hola
+        <div style={{background:"white"}}>
 
             <div id="principal" className='pantalla completa' style={{paddingBottom: '66px'}}>
 
