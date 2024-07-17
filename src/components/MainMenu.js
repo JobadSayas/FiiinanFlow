@@ -58,7 +58,7 @@ const MainMenu = ({onSelect}) =>  {
         const startDate = formatDate(startOfWeek);
         const endDate = formatDate(endOfWeek);
       
-        const url = `https://finanzas.visssible.com/backend/custom-search.php?b=groceries&fi=${startDate}&ff=${endDate}`;
+        const url = `${API_URL}/custom-search.php?b=groceries&fi=${startDate}&ff=${endDate}`;
         window.open(url, '_blank');
     };
 
@@ -80,7 +80,7 @@ const MainMenu = ({onSelect}) =>  {
         const startDate = formatDate(startOfMonth);
         const endDate = `${startOfMonth.getFullYear()}-${String(startOfMonth.getMonth() + 1).padStart(2, '0')}-32`;
       
-        const url = `https://finanzas.visssible.com/backend/custom-search.php?b=all&fi=${startDate}&ff=${endDate}`;
+        const url = `${API_URL}/custom-search.php?b=all&fi=${startDate}&ff=${endDate}`;
         window.open(url, '_blank');
     };
 
@@ -102,7 +102,7 @@ const MainMenu = ({onSelect}) =>  {
         const startDate = formatDate(startOfMonth);
         const endDate = `${startOfMonth.getFullYear()}-${String(startOfMonth.getMonth() + 1).padStart(2, '0')}-32`;
       
-        const url = `https://finanzas.visssible.com/backend/custom-search.php?b=none&s=Cantidad&fi=${startDate}&ff=${endDate}`;
+        const url = `${API_URL}/custom-search.php?b=none&s=Cantidad&fi=${startDate}&ff=${endDate}`;
         window.open(url, '_blank');
     };
    

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Chart from 'chart.js/auto';
+import {API_URL} from '../components/Utilities';
 
 const LineChart = () => {
   const [chartData, setChartData] = useState(null);
@@ -9,7 +10,7 @@ const LineChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://finanzas.visssible.com/backend/NEWchartTotals.php');
+        const response = await axios.get(`${API_URL}/NEWchartTotals.php`);
         setChartData(response.data);
       } catch (error) {
         console.error('Error fetching chart data:', error);

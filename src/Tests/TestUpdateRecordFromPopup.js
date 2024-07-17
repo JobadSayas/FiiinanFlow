@@ -4,7 +4,7 @@ import axios from 'axios';
 // Function to fetch records from API
 const fetchRecords = async () => {
     try {
-        const response = await axios.get('https://finanzas.visssible.com/backend/movimientos-consultar.php?apartado=Leon');
+        const response = await axios.get('API_URL/movimientos-consultar.php?apartado=Leon');
         return response.data;
     } catch (error) {
         console.error('Error fetching data:', error);
