@@ -23,26 +23,26 @@ finance.visssible.com
 
 ## Screenshots
 
-
-<table>
+<table style="border-collapse: collapse; border: none;">
   <tr>
-    <td>
-      <img src="./screenshots/desktop-view.jpg" alt="Descripción del screenshot" width="66%"/>
+    <td colspan="3" style="text-align: center;">
+      <img src="./screenshots/desktop-view.jpg" alt="Descripción del screenshot" style="width: 66%; border: none;"/>
     </td>
   </tr>
     
   <tr>
-    <td>
-      <img src="./screenshots/mobile-view.png" alt="Descripción del screenshot" />
+    <td style="border: none;">
+      <img src="./screenshots/mobile-view.png" alt="Descripción del screenshot" style="width: 100%; border: none;"/>
     </td>
-    <td>
-      <img src="./screenshots/records-view.png" alt="Descripción del screenshot" />
+    <td style="border: none;">
+      <img src="./screenshots/records-view.png" alt="Descripción del screenshot" style="width: 100%; border: none;"/>
     </td>
-    <td>
-      <img src="./screenshots/add-record-view.png" alt="Descripción del screenshot" />
+    <td style="border: none;">
+      <img src="./screenshots/add-record-view.png" alt="Descripción del screenshot" style="width: 100%; border: none;"/>
     </td>
   </tr>
 </table>
+
 
 
 
