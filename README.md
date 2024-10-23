@@ -1,7 +1,3 @@
-# About Finance React
-
-
-
 # Finance React - Personal Finance Tracking System
 
 ## Description
