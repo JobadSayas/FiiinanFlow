@@ -13,8 +13,8 @@ You can see the live version here although it has dummy data for privacy reasons
 finance.visssible.com
 
 ## Screenshots
-![Dashboard View](./screenshots/dashboard.png)
-![Product Page](./screenshots/product_page.png)
+![Desktop View](./screenshots/desktop-view.png)
+![Mobile view](./screenshots/mobile-view.png)
 
 ## Built With
 - React.js
