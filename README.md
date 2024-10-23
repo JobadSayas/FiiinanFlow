@@ -12,12 +12,6 @@ As our needs evolved, I continuously updated the app to make expense tracking mo
 You can see the live version here although it has dummy data for privacy reasons.
 finance.visssible.com
 
-## Screenshots
-<img src="./screenshots/mobile-view.png" alt="Descripción del screenshot" width="33%"/>
-<img src="./screenshots/records-view.png" alt="Descripción del screenshot" width="33%"/>
-<img src="./screenshots/add-record-view.png" alt="Descripción del screenshot" width="33%"/>
-<img src="./screenshots/desktop-view.png" alt="Descripción del screenshot" width="66%"/>
-
 ## Built With
 - React.js
 - Chart.js 
@@ -30,3 +24,9 @@ finance.visssible.com
 -  Multiple budgets and payment methods: Manage various budgets and track expenses across different payment methods.
 -  Real-time API calls: Fetch user and order data dynamically using real-time API integrations.
 -  Reusable components: Built with modular and reusable React components for efficiency and scalability.
+
+## Screenshots
+<img src="./screenshots/mobile-view.png" alt="Descripción del screenshot" width="33%"/>
+<img src="./screenshots/records-view.png" alt="Descripción del screenshot" width="33%"/>
+<img src="./screenshots/add-record-view.png" alt="Descripción del screenshot" width="33%"/>
+<img src="./screenshots/desktop-view.jpg" alt="Descripción del screenshot" width="66%"/>
