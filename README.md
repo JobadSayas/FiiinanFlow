@@ -13,10 +13,10 @@ You can see the live version here although it has dummy data for privacy reasons
 finance.visssible.com
 
 ## Screenshots
-<img src="./screenshots/desktop-view.png" alt="Descripción del screenshot" width="100"/>
-
-![Desktop View](./screenshots/desktop-view.png)
-![Mobile view](./screenshots/mobile-view.png)
+<img src="./screenshots/mobile-view" alt="Descripción del screenshot" width="33%"/>
+<img src="./screenshots/records-view" alt="Descripción del screenshot" width="33%"/>
+<img src="./screenshots/add-record-view" alt="Descripción del screenshot" width="33%"/>
+<img src="./screenshots/desktop-view.png" alt="Descripción del screenshot" width="66%"/>
 
 ## Built With
 - React.js
