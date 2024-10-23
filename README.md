@@ -23,10 +23,10 @@ finance.visssible.com
 
 ## Screenshots
 
-<table style="border-collapse: collapse; border: none;">
+<table>
   <tr>
     <td colspan="3" style="text-align: center;">
-      <img src="./screenshots/desktop-view.jpg" alt="Descripción del screenshot" style="width: 66%; border: none;"/>
+      <center><img src="./screenshots/desktop-view.jpg" alt="Descripción del screenshot" style="width: 66%; border: none;"/></center>
     </td>
   </tr>
     
