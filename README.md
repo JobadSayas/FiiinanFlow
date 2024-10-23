@@ -26,13 +26,13 @@ finance.visssible.com
 <img src="./screenshots/desktop-view.jpg" alt="Descripción del screenshot" width="66%"/>
 <table><tr>
   <td>
-    <img src="./screenshots/mobile-view.png" alt="Descripción del screenshot" width="33%"/>
+    <img src="./screenshots/mobile-view.png" alt="Descripción del screenshot" />
   </td>
   <td>
-    <img src="./screenshots/records-view.png" alt="Descripción del screenshot" width="33%"/>
+    <img src="./screenshots/records-view.png" alt="Descripción del screenshot" />
   </td>
   <td>
-    <img src="./screenshots/add-record-view.png" alt="Descripción del screenshot" width="33%"/>
+    <img src="./screenshots/add-record-view.png" alt="Descripción del screenshot" />
   </td>
 </tr></table>
 
