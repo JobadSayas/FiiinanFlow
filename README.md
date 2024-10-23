@@ -26,7 +26,7 @@ finance.visssible.com
 -  Reusable components: Built with modular and reusable React components for efficiency and scalability.
 
 ## Screenshots
+<img src="./screenshots/desktop-view.jpg" alt="Descripción del screenshot" width="66%"/>
 <img src="./screenshots/mobile-view.png" alt="Descripción del screenshot" width="33%"/>
 <img src="./screenshots/records-view.png" alt="Descripción del screenshot" width="33%"/>
 <img src="./screenshots/add-record-view.png" alt="Descripción del screenshot" width="33%"/>
-<img src="./screenshots/desktop-view.jpg" alt="Descripción del screenshot" width="66%"/>
