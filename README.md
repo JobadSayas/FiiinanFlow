@@ -1,5 +1,4 @@
-# Finance React
-Personal Finance Tracking System
+# Finance React - Personal Finance Tracking System
 
 ## Description
 This project began in 2018 shortly after I got married, with the goal of creating a collaborative system for tracking expenses with my wife. Initially, I developed it using jQuery for the frontend and PHP for the backend, allowing us to have a custom-tailored tool to manage and monitor our finances.
