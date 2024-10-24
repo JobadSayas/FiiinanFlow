@@ -115,7 +115,7 @@ const MainMenu = ({onSelect}) =>  {
         {popOverVisible &&(
             <div id="menu" className="desplegado">
                 <ul>
-                    <li onClick={() => {onSelect('Search'); closeMenu();}}><i className="fas fa-search"></i> Search</li>
+                    <li onClick={() => {onSelect('Search'); closeMenu();}}><i className="fas fa-search"></i> Searches</li>
                     <li onClick={() => {handleLastRecords(); closeMenu();}}><i className="fas fa-list"></i> Last records</li>
                     <li onClick={() => {onSelect('Distribute all'); closeMenu();}}><i className="fas fa-calendar-day"></i> Distribute All</li>
                     <li onClick={() => {onSelect('Transfer'); closeMenu();}}><i className="fas fa-share"></i> Transfer</li>
