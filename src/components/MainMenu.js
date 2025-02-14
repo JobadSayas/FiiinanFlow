@@ -121,11 +121,11 @@ const MainMenu = ({onSelect}) =>  {
                     <li onClick={() => {onSelect('Transfer'); closeMenu();}}><i className="fas fa-share"></i> Transfer</li>
                     <li onClick={() => {onSelect('Multi insert'); closeMenu();}}><i className="fas fa-clone"></i> Multi Insert</li>
                     <li onClick={() => {closeMenu();}}><a href="https://docs.google.com/spreadsheets/d/1KYrZ5UuTdmgxbyKIdNya4WZmfAopNfF9SB-tZ7Fpzjw/edit?pli=1#gid=0" target="_blank" rel="noreferrer" onClick={closeMenu}><i className="fas fa-external-link-alt"></i> JSON Converter</a></li>
-                    <li><i class="fas fa-file"></i> Reports:</li>
+                    {/* <li><i class="fas fa-file"></i> Reports:</li>
                     <li onClick={() => {handleLastMonth(); closeMenu();}}>- Last month</li>
                     <li onClick={() => {handleThisMonth(); closeMenu();}}>- This month</li>
                     <li onClick={() => {handleThisWeekGroceries(); closeMenu();}}>- Groceries this week</li>
-                    <li onClick={() => {handleThisWeekUnplanned(); closeMenu();}}>- Unplanned this month</li>
+                    <li onClick={() => {handleThisWeekUnplanned(); closeMenu();}}>- Unplanned this month</li> */}
                 </ul>
             </div>
         )}
