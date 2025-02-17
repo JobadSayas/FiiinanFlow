@@ -115,7 +115,7 @@ const MainMenu = ({onSelect}) =>  {
         <div id="menu-btn" onClick={handleMenuButtonClick}><i className="fas fa-bars"></i></div>
 
         {popOverVisible &&(
-            <div id="menu" className="desplegado">
+            <div id="menu" className="desplegado border border-gray-700">
                 <ul>
                     <li onClick={() => {onSelect('Search'); closeMenu();}}><i className="fas fa-search"></i> Search</li>
                     <li onClick={() => {handleLastRecords(); closeMenu();}}><i className="fas fa-list"></i> Last records</li>

@@ -1,4 +1,4 @@
-export const version = "3.0";
+export const version = "3.1";
 
 export const user = "demo";
 // original / demo / client

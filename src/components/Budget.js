@@ -79,7 +79,7 @@ const Budget = ({ budget }) =>  {
             <div className="opciones" onClick={() => setIsMenuOpen(!isMenuOpen) }>
                 <i className="fas fa-ellipsis-v" ></i>
                 {isMenuOpen && (
-                    <ul>
+                    <ul className='border border-gray-700'>
                         <li className="disabled">Transfer</li>
                         {budget.reparticion !== "0" && 
                         <li onClick={handleDistribuite}>Distribute ${budget.reparticion}</li>

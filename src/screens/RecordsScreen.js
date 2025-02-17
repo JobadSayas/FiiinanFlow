@@ -168,7 +168,7 @@ const RecordsScreen = () =>  {
 
             {/* Footer */}
             <div className="footer">
-                <button className="btn btn-big btn-default" onClick={handleBackToMain}>Close</button>
+                <button className="btn btn-big btn-default mt-2" onClick={handleBackToMain}>Close</button>
                 <i className="transaction fas fa-plus-circle" onClick={handleNewRecordClick}></i>
             </div>
 

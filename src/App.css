@@ -508,6 +508,7 @@ padding-left:0;
   border-top: none;
   background: rgba(0, 0, 0, 0.72);
   z-index: 3;
+  height: 65px;
 }
 
 
@@ -960,7 +961,7 @@ i.transaction{
 
 #movimientos i.transaction{
   right: 16px;
-  top: 0px;
+  top: 8px;
 }
 
 #remaining{

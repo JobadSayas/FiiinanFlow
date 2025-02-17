@@ -58,7 +58,7 @@ const Record = ({ record, onRecordOpen, onDelete }) =>  {
             <div className="opciones" onClick={() => setIsMenuOpen(!isMenuOpen) }>
                 <i className="fas fa-ellipsis-v"></i>
                 {isMenuOpen && (
-                    <ul>
+                    <ul className='border border-gray-700'>
                         <li className="disabled">Unhighlight</li>
                         <li className="disabled">Duplicate</li>
                         <li onClick={handleDelete}>Delete</li>
