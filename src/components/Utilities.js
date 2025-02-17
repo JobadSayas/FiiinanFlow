@@ -1,18 +1,20 @@
+export const version = "3.0";
 
-// En awardspace
-// export const API_URL = 'https://leonsayas.com/backend/';
+export const user = "demo";
+// original / demo / client
 
-// En awardspace financedemo
-// export const API_URL = 'https://financedemo.visssible.com/backend';
+let selected_URL;
 
-// En dreamhost
-// export const API_URL = 'https://jobsay.dreamhosters.com/financeBackend/';
+switch (user) {
+  case "original":
+    selected_URL = 'https://fiiinanflow.visssible.com/backend';
+    break;
+  case "demo":
+    selected_URL = 'https://fiiinanflow-demo.visssible.com/backend';
+    break;
+  case "sharon":
+    selected_URL = 'https://fiiinanflow-client.visssible.com/backend';
+    break;
+}
 
-// En hostinger Areli
-// export const API_URL = 'https://lawngreen-oyster-299671.hostingersite.com/financeBackend';
-
-// En hostinger Vissible Finance
-// export const API_URL = 'https://finance.visssible.com/backend';
-
-// En hostinger Vissible Demo
-export const API_URL = 'https://financedemo.visssible.com/backend';
+export const API_URL = selected_URL;

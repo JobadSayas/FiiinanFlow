@@ -8,7 +8,6 @@ import './App.css';
 
 import MainScreen from './screens/MainScreen';
 import RecordsScreen from './screens/RecordsScreen';
-import TestScreen from './screens/TestScreen';
 
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
         <Route path="/records/:budget?/:method?/:type?/:keyword?/:method?/:start_date?/:end_date?/:limit?" 
                element={<RecordsScreen />} 
         />
-        <Route path="/test" element={<TestScreen />} />
       </Routes>
     </Router>
   );
